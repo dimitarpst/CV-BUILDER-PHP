@@ -49,7 +49,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
             create_user($pdo, $username, $email, $pwd); 
             $_SESSION['signup_success'] = true; 
         }
-        header("Location: ../index.php?signup=success");
+        header("Location: ../index.php");
 
         $pdo = null;
         $stmt = null;

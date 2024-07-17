@@ -178,12 +178,24 @@ if (!isset($_SESSION['user_id'])) {
 
     </div>
 
+    <div class="modal3">
+        <div class="errorcard">
+            <h2 id="error-title">Error</h2>
+        <div id="error-message"></div> <button class="close-button" onclick="closeModalError(event)"><i class='bx bx-x-circle'></i></button>
+        </div>
+    </div>
+
+
  <?php //check_cv_errors(); ?> 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="js/modalCV.js"></script>
     <script src="js/dashboard.js"></script>
     <script src="js/sr.js"></script> 
     <script src="js/modalProfile.js"></script>
+    <script src="js/errorMsg.js"></script>
+    <?php
+    check_cv_errors();
+    ?>
 </body>
 
 </html>

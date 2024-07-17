@@ -49,3 +49,11 @@ function update_cv(object $pdo, int $cvId, int $userId, array $cvData) {
     }
     $stmt->execute();
 }
+
+function delete_cv(object $pdo, int $cvId, int $userId) {
+    $query = "DELETE FROM cv_data WHERE id = :cvId AND user_id = :userId";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(':cvId', $cvId, PDO::PARAM_INT);
+    $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
+    $stmt->execute();
+}

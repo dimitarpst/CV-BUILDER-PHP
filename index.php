@@ -104,6 +104,7 @@ require_once 'includes/login_view.inc.php';
     <script src="js/sr.js"></script>
     <script src="js/resize.js"></script>
     <script src="js/modalLR.js"></script>
+    <script src="js/errorMsg.js"></script>
 
     <?php
     check_register_errors();
