@@ -20,7 +20,7 @@ function display_cv_list(object $pdo, int $user_id) {
                 <h2><?= htmlspecialchars($cv['cvname']) ?></h2>
                 <a href="cv.php?cv_id=<?= $cv['id'] ?>" class="view-cv-btn">View CV</a>
                 <button class="delete-cv-btn" type="button">Delete CV</button>
-                <button class="edit-cv-btn" type="button">Edit CV</button>
+                <button class="edit-cv-btn" onclick="closeAllOtherCvFields(currentCard)" type="button">Edit CV</button>
                 <div class="cv-fields" style="display: none;"> 
                 <fieldset>
                     <legend>CV Name</legend>
@@ -83,4 +83,3 @@ function display_cv_list(object $pdo, int $user_id) {
         <?php
     }
 }
-    

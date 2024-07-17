@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
     cvCards.forEach(card => {
         const editButton = card.querySelector('.edit-cv-btn');
         const cvFields = card.querySelector('.cv-fields');
-
         editButton.addEventListener('click', () => {
             cvFields.style.display = cvFields.style.display === 'none' ? 'block' : 'none';
             if (cvFields.style.display === 'block') {
@@ -56,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 editButton.textContent = 'Edit CV';
             }
-            cvFields.classList.toggle('active');
         });
     });
 });
@@ -71,19 +69,4 @@ function populateCVForm(cvData) {
             }
         }
     }
-}
-
-function openEditModal(modalId, cvData) {
-    populateCVForm(cvData); 
-    const modal = document.getElementById(modalId);
-    const form = modal.querySelector('form');
-    const inputs = form.querySelectorAll('input, select, textarea');
-
-    //Enable inputs and show the form
-    inputs.forEach(input => {
-        input.disabled = false;
-    });
-    form.style.display = 'block';
-
-    toggleModalCV(event); 
 }
