@@ -169,7 +169,7 @@ if (!isset($_SESSION['user_id'])) {
                     <form id="profile-form" action="includes/logout.inc.php" method="POST">
                         
                         <form action="includes/logout.inc.php" method="post">                        
-                            <button class="create-cv"><i class='bx bx-log-out-circle'></i>Logout</button>
+                            <button class="create-cv"><i class='bx bx-x-circle'></i>Logout</button>
                         </form>
                     </form>
                 </section>
@@ -180,8 +180,9 @@ if (!isset($_SESSION['user_id'])) {
 
     <div class="modal3">
         <div class="errorcard">
-            <h2 id="error-title">Error</h2>
-        <div id="error-message"></div> <button class="close-button" onclick="closeModalError(event)"><i class='bx bx-x-circle'></i></button>
+        <h2 id="error-title">Error</h2>
+        <div id="error-message"> </div> 
+        <button class="close-button" onclick="closeModalError(event)"><i class='bx bx-x-circle'></i></button>
         </div>
     </div>
 

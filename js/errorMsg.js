@@ -2,6 +2,9 @@ function showErrorMessage(errors) {
     const errorMessageDiv = document.getElementById('error-message');
     const errorHeading = document.querySelector('.modal3 h2'); 
     errorMessageDiv.innerHTML = "";
+
+    const blurOverlay = document.querySelector('.blur-overlay');
+    blurOverlay.addEventListener('click', closeModalError);
     
     if (document.body.classList.contains('open-error')) {
         closeModalError();

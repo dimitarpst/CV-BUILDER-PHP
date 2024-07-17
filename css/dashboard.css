@@ -773,3 +773,33 @@ body.open-logout .blur-overlay {
     font-size: 50px;
     color: red;
 }
+
+.close-button {
+  position: absolute!important;
+  top: 2px!important;
+  right: -10px !important;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  cursor: pointer!important;
+  transition: all .55s ease!important;
+  color: #ffffff!important;
+font-size: 40px!important;
+vertical-align: middle!important;
+margin-right: 5px!important;
+padding: 12px 30px!important;
+}
+
+.close-button i {
+color: #ffffff!important;
+font-size: 40px!important;
+vertical-align: middle!important;
+margin-right: 5px!important;
+padding: 12px 10px!important;
+}
+
+.close-button:hover {
+background: transparent;
+transform: translateY(-4px);
+}
+
