@@ -33,50 +33,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         $errors["invalid_email"] = "Invalid email used!";
     }
 
-    if (is_fullname_with_only_letters_and_spaces($cvData["fullname"])) {
-        $errors["invalid_fullname"] = "Invalid fullname used!";
-    }
-/*
-    if (is_gender_invalid($cvData["gender"])) {
-        $errors["invalid_gender"] = "Invalid fullname used!";
-    }
-
-    if (is_age_invalid($cvData['age'])) {
-        $errors["invalid_age"] = "Invalid age used!";
-    }
-
-    if (is_phone_invalid($cvData['phone'])) {
-        $errors["invalid_phone"] = "Invalid phone used!";
-    }
-
-    if (is_job_title_between($cvData['job_title'])) {
-        $errors["invalid_job_title"] = "Invalid job title used!";
-    }
-
-    if (is_company_between($cvData['company'])) {
-        $errors["invalid_company"] = "Invalid company used!";
-    }
-
-    if (is_start_date_invalid($cvData['start_date'], $cvData['end_date'])) {
-        $errors["invalid_start_date"] = "Invalid start date used!";
-    }
-
-    if (is_end_date_invalid($cvData['end_date'], $cvData['start_date'])) {
-        $errors["invalid_end_date"] = "Invalid end date used!";
-    }
-
-    if (is_degree_between($cvData['degree'])) {
-        $errors["invalid_degree"] = "Invalid degree used!";
-    }
-
-    if (is_university_between($cvData['university'])) {
-        $errors["invalid_university"] = "Invalid university used!";
-    }
-
-    if (is_graduation_year_invalid($cvData['graduation_year'])) {
-        $errors["invalid_graduation_year"] = "Invalid graduation year used!";
-    }
-*/
     if ($errors) {
         $_SESSION['errors_cv'] = $errors;
         $_SESSION['cv_data'] = $cvData;
