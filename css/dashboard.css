@@ -648,7 +648,6 @@ margin-right: 8px;
 }
 
 .cv-card form {
-  backdrop-filter: blur(8px);
   padding: 10px;
   margin: 0;
 }

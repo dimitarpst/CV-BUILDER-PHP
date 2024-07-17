@@ -45,18 +45,25 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    cvCards.forEach(card => {
-        const editButton = card.querySelector('.edit-cv-btn');
-        const cvFields = card.querySelector('.cv-fields');
-        editButton.addEventListener('click', () => {
+    const editCvButtons = document.querySelectorAll('.edit-cv-btn');
+    editCvButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const cvCard = this.closest('.cv-card');
+            const cvFields = cvCard.querySelector('.cv-fields');
             cvFields.style.display = cvFields.style.display === 'none' ? 'block' : 'none';
-            if (cvFields.style.display === 'block') {
-                editButton.textContent = 'Cancel Edit';
-            } else {
-                editButton.textContent = 'Edit CV';
-            }
+            this.textContent = cvFields.style.display === 'block' ? 'Cancel Edit' : 'Edit CV';
+            document.querySelectorAll('.cv-card').forEach(cvCard => {
+                const cvFields = cvCard.querySelector('.cv-fields');
+                if (cvFields.style.display === 'none') {
+                    cvCard.style.height = '180px';
+                }
+                else if (cvFields.style.display === 'block') {
+                    cvCard.style.height = 'auto';
+                }
+            });
         });
     });
+    
 });
 
 function populateCVForm(cvData) {
