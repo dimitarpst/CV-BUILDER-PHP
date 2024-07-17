@@ -6,6 +6,7 @@ require_once 'cv_model.inc.php';
 require_once 'cv_contr.inc.php';  
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
+    $cvId = (int)$_POST['cvId'];
     $cvData = [
         'user_id'        => $_SESSION['user_id'],
         'cvname'          => $_POST['cvname'],
@@ -25,6 +26,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $errors = [];
 
+    if (is_cvname_duplicate($cvData["cvname"], $cvId, $pdo)) {
+        $errors["duplicate_cvname"] = "There is already a CV with that name!";
+    }
+
     if (is_input_empty($cvData)) {
         $errors["empty_input"] = "Fill in all fields!";
     }
@@ -36,9 +41,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if (is_fullname_with_only_letters_and_spaces($cvData["fullname"])) {
         $errors["invalid_fullname"] = "Invalid fullname used!";
     }
-/*
+
     if (is_gender_invalid($cvData["gender"])) {
-        $errors["invalid_gender"] = "Invalid fullname used!";
+        $errors["invalid_gender"] = "Invalid gender used!";
     }
 
     if (is_age_invalid($cvData['age'])) {
@@ -76,7 +81,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if (is_graduation_year_invalid($cvData['graduation_year'])) {
         $errors["invalid_graduation_year"] = "Invalid graduation year used!";
     }
-*/
+
     if ($errors) {
         $_SESSION['errors_cv'] = $errors;
         $_SESSION['cv_data'] = $cvData;

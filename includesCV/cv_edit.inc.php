@@ -27,8 +27,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         $errors = [];
 
+        if (!has_cv_data_changed($cvId, $cvData, $pdo)) {
+            $errors["no_changes"] = "No changes were made to the CV.";
+        }
+
         if (is_input_empty($cvData)) {
             $errors["empty_input"] = "Fill in all fields!";
+        }
+
+        if (is_cvname_duplicate($cvData["cvname"], $cvId, $pdo)) {
+            $errors["duplicate_cvname"] = "There is already a CV with that name!";
         }
 
         if (is_email_invalid($cvData['email'])) {
@@ -38,9 +46,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (is_fullname_with_only_letters_and_spaces($cvData["fullname"])) {
             $errors["invalid_fullname"] = "Invalid fullname used!";
         }
-/*
+
         if (is_gender_invalid($cvData["gender"])) {
-            $errors["invalid_gender"] = "Invalid fullname used!";
+            $errors["invalid_gender"] = "Invalid gender used!";
         }
 
         if (is_age_invalid($cvData['age'])) {
@@ -58,11 +66,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (is_company_between($cvData['company'])) {
             $errors["invalid_company"] = "Invalid company used!";
         }
-    
+ 
         if (is_start_date_invalid($cvData['start_date'], $cvData['end_date'])) {
             $errors["invalid_start_date"] = "Invalid start date used!";
         }
-    
+      
         if (is_end_date_invalid($cvData['end_date'], $cvData['start_date'])) {
             $errors["invalid_end_date"] = "Invalid end date used!";
         }
@@ -74,22 +82,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (is_university_between($cvData['university'])) {
             $errors["invalid_university"] = "Invalid university used!";
         }
-    
+
         if (is_graduation_year_invalid($cvData['graduation_year'])) {
             $errors["invalid_graduation_year"] = "Invalid graduation year used!";
         }
-            */
+
         if ($errors) {
             $_SESSION['errors_cv'] = $errors;
             $_SESSION['cv_data'] = $cvData;
 
-            header("Location: ../dashboard.php?error=validationfailed");
+            header("Location: ../dashboard.php");
             exit();
         } else {
             try {
                 update_cv($pdo, $cvId, $userId, $cvData); 
 
-                header("Location: ../dashboard.php?success=cvedited");
+                header("Location: ../dashboard.php");
                 exit();
             } catch (PDOException $e) {
                 error_log("Database Error: " . $e->getMessage());

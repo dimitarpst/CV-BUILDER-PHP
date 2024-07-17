@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
     createCvButton.addEventListener('click', toggleModalCV);
     closeCvModal.addEventListener('click', closeModalCV);
     blurOverlay.addEventListener('click', closeModalCV);
-    
     blurOverlay.style.pointerEvents = 'auto';
     function toggleModalCV(event) {
         event.stopPropagation();
