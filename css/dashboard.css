@@ -710,6 +710,17 @@ margin-right: 8px;
   border-radius: 20px;
 }
 
+.start_date_edit, 
+.end_date_ edit {
+  width: 70%;
+}
+
+#age_edit, 
+#graduation-year_edit, 
+#gender_edit {
+  width: 45%;
+  text-align: center;
+}
 
 /*ERROR*/
 

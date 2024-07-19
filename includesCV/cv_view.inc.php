@@ -155,14 +155,14 @@ function display_cv_list(object $pdo, int $user_id) {
                     <input type="email" id="email" name="email" value="<?= htmlspecialchars($cv['email']) ?>" >
 
                     <label for="gender">Gender:</label>
-                    <select id="gender" name="gender" >
+                    <select id="gender_edit" name="gender" >
                         <option value="male" <?= $cv['gender'] == 'male' ? 'selected' : '' ?>>Male</option>
                         <option value="female" <?= $cv['gender'] == 'female' ? 'selected' : '' ?>>Female</option>
                         <option value="other" <?= $cv['gender'] == 'other' ? 'selected' : '' ?>>Other</option>
                     </select>
 
                     <label for="age">Age:</label>
-                    <input type="number" id="age" name="age" value="<?= htmlspecialchars(strval($cv['age'])) ?>" >
+                    <input type="number" id="age_edit" name="age" value="<?= htmlspecialchars(strval($cv['age'])) ?>" >
 
                     <label for="phone">Phone:</label>
                     <input type="tel" id="phone" name="phone" value="<?= htmlspecialchars(strval($cv['phone'])) ?>" >
@@ -177,10 +177,10 @@ function display_cv_list(object $pdo, int $user_id) {
                     <input type="text" id="company" name="company" value="<?= htmlspecialchars($cv['company']) ?>" >
 
                     <label for="start_date">Start Date:</label>
-                    <input type="date" id="start_date" name="start_date" value="<?= htmlspecialchars($cv['start_date']) ?>" >
+                    <input type="date" id="start_date_edit" name="start_date" value="<?= htmlspecialchars($cv['start_date']) ?>" >
 
                     <label for="end_date">End Date:</label>
-                    <input type="date" id="end_date" name="end_date" value="<?= htmlspecialchars($cv['end_date']) ?>" >
+                    <input type="date" id="end_date_edit" name="end_date" value="<?= htmlspecialchars($cv['end_date']) ?>" >
                 </fieldset>
 
                 <fieldset>
@@ -192,7 +192,7 @@ function display_cv_list(object $pdo, int $user_id) {
                     <input type="text" id="university" name="university" value="<?= htmlspecialchars($cv['university']) ?>" >
 
                     <label for="graduation-year">Graduation Year:</label>
-                    <input type="number" id="graduation-year" name="graduation_year" value="<?= htmlspecialchars(strval($cv['graduation_year'])) ?>" >
+                    <input type="number" id="graduation-year_edit" name="graduation_year" value="<?= htmlspecialchars(strval($cv['graduation_year'])) ?>" >
                 </fieldset>
                 <button type="submit" class="save-cv-btn">Save Changes</button> 
                 </div>

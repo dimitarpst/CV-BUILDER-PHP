@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errors["empty_input"] = "Fill in all fields!";
         }
 
-        if (is_cvname_duplicate($cvData["cvname"], $cvId, $pdo)) {
+        if (is_cvname_duplicate($cvData["cvname"], $cvId, $userId, $pdo)) {
             $errors["duplicate_cvname"] = "There is already a CV with that name!";
         }
 

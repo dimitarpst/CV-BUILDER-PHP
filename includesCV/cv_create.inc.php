@@ -7,6 +7,7 @@ require_once 'cv_contr.inc.php';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $cvId = (int)$_POST['cvId'];
+    $userId = $_SESSION['user_id'];
     $cvData = [
         'user_id'        => $_SESSION['user_id'],
         'cvname'          => $_POST['cvname'],
@@ -26,7 +27,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     $errors = [];
 
-    if (is_cvname_duplicate($cvData["cvname"], $cvId, $pdo)) {
+    if (is_cvname_duplicate($cvData["cvname"], $cvId, $userId, $pdo)) {
         $errors["duplicate_cvname"] = "There is already a CV with that name!";
     }
 

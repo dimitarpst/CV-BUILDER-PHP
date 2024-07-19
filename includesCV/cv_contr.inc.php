@@ -67,7 +67,7 @@ function is_job_title_between(string $job_title)
 
 function is_company_between(string $company) 
 {
-    if (!preg_match("/^[a-zA-Z ]{1,255}$/", $company)) {
+    if (!preg_match("/[a-zA-Z ]{1,255}/", $company)) {
         return true;
     } else {
         return false;
@@ -76,7 +76,7 @@ function is_company_between(string $company)
 
 function is_degree_between(string $degree)
 {
-    if (!preg_match("/^[a-zA-Z ]{1,255}$/", $degree)) {
+    if (!preg_match("/[a-zA-Z ]{1,255}/", $degree)) {
         return true;
     } else {
         return false;
@@ -85,7 +85,7 @@ function is_degree_between(string $degree)
 
 function is_university_between(string $university)
 {
-    if (!preg_match("/^[a-zA-Z ]{1,255}$/", $university)) {
+    if (!preg_match("/[a-zA-Z ]{1,255}/", $university)) {
         return true;
     } else {
         return false;
@@ -130,10 +130,9 @@ function has_cv_data_changed(int $cvId, array $newCvData, PDO $pdo): bool {
     }
     return false;
 }
-
-function is_cvname_duplicate(string $cvname, int $cvId, PDO $pdo): bool {
-    $stmt = $pdo->prepare("SELECT COUNT(*) FROM cv_data WHERE cvname = :cvname AND id != :cv_id");
-    $stmt->execute(['cvname' => $cvname, 'cv_id' => $cvId]);
+function is_cvname_duplicate(string $cvname, int $cvId, int $userId, PDO $pdo): bool {
+    $stmt = $pdo->prepare("SELECT COUNT(*) FROM cv_data WHERE cvname = :cvname AND id != :cv_id AND user_id = :user_id");
+    $stmt->execute(['cvname' => $cvname, 'cv_id' => $cvId, 'user_id' => $userId]);
     $count = $stmt->fetchColumn();
     return $count > 0;
 }
