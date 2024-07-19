@@ -1,20 +1,18 @@
 <?php
 
-$host = 'localhost';
-$dbname = 'cvbuilderdb';
-$dbusername = 'root';
-$dbpassword = '';
+ $host = 'localhost';
+ $dbname = 'cvbuilderdb';
+ $dbusername = 'root';
+ $dbpassword = '';
 
-try {
-    $pdo = new PDO("mysql:host=$host", $dbusername, $dbpassword);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->exec("USE $dbname");
-/*
-    // Create database if it doesn't exist
+ try{
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbusername, $dbpassword);
+    $pdo -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+ } catch(PDOException $e) {
+    die("Connection failed: " . $e->getMessage());
+ }
     $pdo->exec("CREATE DATABASE IF NOT EXISTS $dbname CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci");
 
-
-    // Create `cv_data` table if it doesn't exist
     $pdo->exec("CREATE TABLE IF NOT EXISTS cv_data (
         id INT(11) AUTO_INCREMENT PRIMARY KEY,
         user_id INT(11) NOT NULL,
@@ -33,14 +31,9 @@ try {
         graduation_year INT(4) NOT NULL
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
 
-    // Create `users` table if it doesn't exist
     $pdo->exec("CREATE TABLE IF NOT EXISTS users (
         id INT(11) AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(255) NOT NULL,
         email VARCHAR(100) NOT NULL,
         pwd VARCHAR(255) NOT NULL
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
-*/
-} catch (PDOException $e) {
-    die("Connection failed: " . $e->getMessage());
-}
