@@ -2,6 +2,16 @@
 
 declare(strict_types= 1);
 
+if (!isset($_SESSION['user_id'])) {
+    $_SESSION['index_visit_count'] = 0; // Reset for users not logged in
+} else {
+    if (!isset($_SESSION['index_visit_count'])) {
+        $_SESSION['index_visit_count'] = 1; // Initialize on first visit after login
+    } else {
+        $_SESSION['index_visit_count']++; // Increment on subsequent visits
+    }
+}
+
 function output_user_info() 
 {
     if (isset($_SESSION["user_id"])) {
@@ -23,21 +33,13 @@ function check_login_errors() {
             });
         </script>';
         unset($_SESSION["errors_login"]);
-    } elseif (isset($_SESSION['login_success'])) {
-        echo '<script>
-            window.addEventListener("load", function() {
-                showSuccessMessage(["Successful login!"]);
-                
-            });
-        </script>';
-        unset($_SESSION['login_success']);
-    }
+    } 
 }
 function check_logout() {
     if (isset($_GET["logout"]) && $_GET["logout"] === "success") {
         echo '<script>
             window.addEventListener("load", function() {
-                showLogoutMessage("Successful logout!");                
+                showSuccessMessage("Successful logout!");                
             });
         </script>';
         
@@ -59,18 +61,24 @@ function check_login() {
 }
 
 function checkAlreadyLoggedIn() {
-    /*if (isset($_SESSION['user_id'])) { 
-        echo '<script>
-                window.addEventListener("load", function() {
-                    showErrorMessage(["You are already logged in. Redirecting to dashboard..."]);
-                    setTimeout(function() {
-                        window.location.href = "dashboard.php";
-                    }, 2000);
-                });
-              </script>';
-        exit();
-    }*/
-//fix
+    if (isset($_SESSION['user_id'])) {
+        if ($_SESSION['index_visit_count'] <= 1) {
+            echo '<script>
+                    window.addEventListener("load", function() {
+                        showSuccessMessage(["Successful login!"]);
+                    });
+                  </script>';
+        } else {
+            echo '<script>
+                    window.addEventListener("load", function() {
+                        showErrorMessage(["You are already logged in. Redirecting to dashboard..."]);
+                        setTimeout(function() {
+                            window.location.href = "dashboard.php";
+                        }, 2000);
+                    });
+                  </script>';
+        }
+    }
 }
 
 function login_inputs() {

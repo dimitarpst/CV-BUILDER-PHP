@@ -64,10 +64,6 @@ require_once 'includes/login_view.inc.php';
         </div>
     </div>
 
-    <?php
-    check_login_errors();
-    ?>
-
     <div class="modal2">
         <div class="lrcard">
             <h2>Sign up</h2>
@@ -89,16 +85,6 @@ require_once 'includes/login_view.inc.php';
         <div id="error-message"></div> <button class="close-button" onclick="closeModalError(event)"><i class='bx bx-x-circle'></i></button>
         </div>
     </div>
-
-    <div class="modal4">
-    <div class="lrcard">
-        <h2>Logout</h2>
-        <div id="logout-message">Successful logout!</div>
-        <button class="close-button" onclick="closeModalLogout(event)"><i class='bx bx-x-circle'></i></button>
-    </div>
-    </div>
-    
-    
 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="js/sr.js"></script>
