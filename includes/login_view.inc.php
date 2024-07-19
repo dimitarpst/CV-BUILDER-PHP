@@ -26,10 +26,8 @@ function check_login_errors() {
     } elseif (isset($_SESSION['login_success'])) {
         echo '<script>
             window.addEventListener("load", function() {
-                showSuccessMessage("Successful login!");
-                setTimeout(function() {
-                    window.location.href = "dashboard.php"; 
-                }, 2000);
+                showSuccessMessage(["Successful login!"]);
+                
             });
         </script>';
         unset($_SESSION['login_success']);
@@ -61,7 +59,7 @@ function check_login() {
 }
 
 function checkAlreadyLoggedIn() {
-    if (isset($_SESSION['user_id'])) { 
+    /*if (isset($_SESSION['user_id'])) { 
         echo '<script>
                 window.addEventListener("load", function() {
                     showErrorMessage(["You are already logged in. Redirecting to dashboard..."]);
@@ -71,7 +69,8 @@ function checkAlreadyLoggedIn() {
                 });
               </script>';
         exit();
-    }
+    }*/
+//fix
 }
 
 function login_inputs() {
