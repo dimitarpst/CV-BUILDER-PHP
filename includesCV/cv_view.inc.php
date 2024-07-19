@@ -20,6 +20,115 @@ function check_cv_errors()
     } 
 }
 
+function cv_inputs() {
+    // CV Name
+    echo '<fieldset>';
+    echo '<legend>CV Name</legend>';
+    echo '<label for="cvname">Enter CV name</label>';
+    if (isset($_SESSION['cv_data']['cvname'])) {        
+        echo '<input type="text" id="cvname" name="cvname" value="' . $_SESSION['cv_data']['cvname'] . '">';
+    } else {
+        echo '<input type="text" id="cvname" name="cvname">';
+    }
+    echo '</fieldset>';
+
+    echo '<fieldset>';
+    echo '<legend>Personal Information</legend>';
+    echo '<label for="fullname">Full Name</label>';
+    if (isset($_SESSION['cv_data']['fullname'])) {
+        echo '<input type="text" id="fullname" name="fullname" value="' . $_SESSION['cv_data']['fullname'] . '">';
+    } else {
+        echo '<input type="text" id="fullname" name="fullname">';
+    }
+
+    echo '<label for="email">Email</label>';
+    if (isset($_SESSION['cv_data']['email']) && !isset($_SESSION['errors_cv']['invalid_email'])) {
+        echo '<input type="email" id="email" name="email" value="' . $_SESSION['cv_data']['email'] . '">';
+    } else {
+        echo '<input type="email" id="email" name="email">';
+    }
+
+    echo '<label for="gender">Gender</label>';
+    echo '<select id="gender" name="gender">';
+    $genderOptions = ['male' => 'Male', 'female' => 'Female', 'other' => 'Other'];
+    $selectedGender = $_SESSION['cv_data']['gender'] ?? '';
+    foreach ($genderOptions as $value => $label) {
+        $selected = ($value == $selectedGender) ? 'selected' : '';
+        echo "<option value=\"$value\" $selected>$label</option>";
+    }
+    echo '</select>';
+
+    echo '<label for="age">Age</label>';
+    if (isset($_SESSION['cv_data']['age'])) {
+        echo '<input type="number" id="age" name="age" value="' . $_SESSION['cv_data']['age'] . '">';
+    } else {
+        echo '<input type="number" id="age" name="age">';
+    }
+    echo '<label for="phone">Phone</label>';
+    if (isset($_SESSION['cv_data']['phone'])) {
+        echo '<input type="tel" id="phone" name="phone" value="' . $_SESSION['cv_data']['phone'] . '">';
+    } else {
+        echo '<input type="tel" id="phone" name="phone">';
+    }
+    echo '</fieldset>';
+
+    echo '<fieldset>';
+    echo '<legend>Work Experience</legend>';
+
+    echo '<label for="job-title">Job Title</label>';
+    if (isset($_SESSION['cv_data']['job_title'])) {
+        echo '<input type="text" id="job-title" name="job_title" value="' . $_SESSION['cv_data']['job_title'] . '">';
+    } else {
+        echo '<input type="text" id="job-title" name="job_title">';
+    }
+
+    echo '<label for="company">Company</label>';
+    if (isset($_SESSION['cv_data']['company'])) {
+        echo '<input type="text" id="company" name="company" value="' . $_SESSION['cv_data']['company'] . '">';
+    } else {
+        echo '<input type="text" id="company" name="company">';
+    }
+
+    echo '<label for="start_date">Start Date</label>';
+    if (isset($_SESSION['cv_data']['start_date'])) {
+        echo '<input type="date" id="start_date" name="start_date" value="' . $_SESSION['cv_data']['start_date'] . '">';
+    } else {
+        echo '<input type="date" id="start_date" name="start_date">';
+    }
+
+    echo '<label for="end_date">End Date</label>';
+    if (isset($_SESSION['cv_data']['end_date'])) {
+        echo '<input type="date" id="end_date" name="end_date" value="' . $_SESSION['cv_data']['end_date'] . '">';
+    } else {
+        echo '<input type="date" id="end_date" name="end_date">';
+    }
+    echo '</fieldset>';
+
+    echo '<fieldset>';
+    echo '<legend>Education</legend>';
+    echo '<label for="degree">Degree</label>';
+    if (isset($_SESSION['cv_data']['degree'])) {
+        echo '<input type="text" id="degree" name="degree" value="' . $_SESSION['cv_data']['degree'] . '">';
+    } else {
+        echo '<input type="text" id="degree" name="degree">';
+    }
+    
+    echo '<label for="university">University</label>';
+    if (isset($_SESSION['cv_data']['university'])) {
+        echo '<input type="text" id="university" name="university" value="' . $_SESSION['cv_data']['university'] . '">';
+    } else {
+        echo '<input type="text" id="university" name="university">';
+    }
+
+    echo '<label for="graduation-year">Graduation Year</label>';
+    if (isset($_SESSION['cv_data']['graduation_year'])) {
+        echo '<input type="number" id="graduation-year" name="graduation_year" value="' . $_SESSION['cv_data']['graduation_year'] . '">';
+    } else {
+        echo '<input type="number" id="graduation-year" name="graduation_year">';
+    }
+    echo '</fieldset>';
+}
+
 function display_cv_list(object $pdo, int $user_id) {
     $cvs = get_cv_by_user_id($pdo, $user_id);
     foreach ($cvs as $cv) {

@@ -77,68 +77,8 @@ if (!isset($_SESSION['user_id'])) {
                 </div>
             </div>
             <section>
-                   <form id="cv-form" action="includesCV/cv_create.inc.php" method="POST">
-                    <fieldset>
-                        <legend>CV Name</legend>
-                        <label for="cvname">Enter CV name</label>
-                        <input type="text" id="cvname" name="cvname">
-                    </fieldset>
-                    <fieldset>
-                        <legend>Personal Information</legend>
-                        <label for="fullname">Full Name</label>
-                        <input type="text" id="fullname" name="fullname">
-
-                        <label for="email">Email</label>
-                        <input type="email" id="email" name="email">
-
-                        <label for="gender">Gender</label>
-                        <select type="text" id="gender" name="gender">
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
-                            <option value="other">Other</option>
-                        </select>
-
-                        <label for="age">Age</label>
-                        <input type="number" id="age" name="age">
-
-                        <label for="phone">Phone</label>
-                        <input type="tel" id="phone" name="phone">
-
-                    </fieldset>
-
-                    <fieldset>
-                        <legend>Work Experience</legend>
-
-                        <div>
-                            <label for="job-title">Job Title</label>
-                            <input type="text" id="job-title" name="job_title">
-
-                            <label for="company">Company</label>
-                            <input type="text" id="company" name="company">
-
-                            <label for="start_date">Start Date</label>
-                            <input type="date" id="start_date" name="start_date">
-
-                            <label for="end_date">End Date</label>
-                            <input type="date" id="end_date" name="end_date">
-                        </div>
-                    </fieldset>
-
-                    <fieldset>
-                        <legend>Education</legend>
-
-                        <div>
-                            <label for="degree">Degree</label>
-                            <input type="text" id="degree-1" name="degree">
-
-                            <label for="university">University</label>
-                            <input type="text" id="university" name="university">
-
-                            <label for="graduation-year">Graduation Year</label>
-                            <input type="number" id="graduation-year" name="graduation_year">
-                        </div>
-                    </fieldset>
-
+                <form id="cv-form" action="includesCV/cv_create.inc.php" method="POST">
+                    <?php cv_inputs(); ?>
                     <button id="save-cv-btn" type="submit">Save</button>
                     
                 </form>
