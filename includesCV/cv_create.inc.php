@@ -91,7 +91,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     } else {
         try {
             create_cv($pdo, $cvData);
-                header("Location: ../dashboard.php");    
+            header("Location: ../dashboard.php");
+            //display success message    
             exit();
         } catch (PDOException $e) {
             $errors['db_error'] = "Database error: " . $e->getMessage();

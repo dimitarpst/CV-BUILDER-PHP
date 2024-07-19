@@ -136,3 +136,25 @@ function is_cvname_duplicate(string $cvname, int $cvId, int $userId, PDO $pdo): 
     $count = $stmt->fetchColumn();
     return $count > 0;
 }
+
+function check_cv_errors()
+{
+    if (isset($_SESSION["errors_cv"]) && !empty($_SESSION["errors_cv"])) {
+        $errors = $_SESSION["errors_cv"];
+
+        $errorMessages = array_values($errors);
+
+        echo '<script>
+            window.addEventListener("load", function() {
+                showErrorMessage(' . json_encode($errorMessages) . ');
+            });
+        </script>';
+        unset($_SESSION["errors_cv"]);
+    } 
+}
+
+//function to display a success message when a cv is successfully created
+
+//function to display a success message when a cv is successfully edited
+
+//function to display a success message when a cv is successfully deleted

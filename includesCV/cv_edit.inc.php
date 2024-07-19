@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             try {
                 update_cv($pdo, $cvId, $userId, $cvData); 
-
+                //display success message  
                 header("Location: ../dashboard.php");
                 exit();
             } catch (PDOException $e) {

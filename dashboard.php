@@ -109,7 +109,7 @@ if (!isset($_SESSION['user_id'])) {
                     <form id="profile-form" action="includes/logout.inc.php" method="POST">
                         
                         <form action="includes/logout.inc.php" method="post">                        
-                            <button class="create-cv"><i class='bx bx-x-circle'></i>Logout</button>
+                            <button class="create-cv"><i class='bx bx-log-out-circle'></i>Logout</button>
                         </form>
                     </form>
                 </section>

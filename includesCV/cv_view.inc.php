@@ -4,22 +4,6 @@ declare(strict_types = 1);
 
 require_once 'includesCV/cv_model.inc.php';
 
-function check_cv_errors()
-{
-    if (isset($_SESSION["errors_cv"]) && !empty($_SESSION["errors_cv"])) {
-        $errors = $_SESSION["errors_cv"];
-
-        $errorMessages = array_values($errors);
-
-        echo '<script>
-            window.addEventListener("load", function() {
-                showErrorMessage(' . json_encode($errorMessages) . ');
-            });
-        </script>';
-        unset($_SESSION["errors_cv"]);
-    } 
-}
-
 function cv_inputs() {
     // CV Name
     echo '<fieldset>';
