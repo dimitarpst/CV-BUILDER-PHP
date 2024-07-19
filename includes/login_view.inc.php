@@ -61,7 +61,6 @@ function check_login() {
 }
 
 function checkAlreadyLoggedIn() {
-    echo $_SESSION['user_id'];
     if (isset($_SESSION['user_id'])) { 
         echo '<script>
                 window.addEventListener("load", function() {

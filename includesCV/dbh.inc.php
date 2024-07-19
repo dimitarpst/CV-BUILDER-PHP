@@ -8,12 +8,11 @@ $dbpassword = '';
 try {
     $pdo = new PDO("mysql:host=$host", $dbusername, $dbpassword);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo->exec("USE $dbname");
 /*
     // Create database if it doesn't exist
     $pdo->exec("CREATE DATABASE IF NOT EXISTS $dbname CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci");
 
-    // Select the database
-    $pdo->exec("USE $dbname");
 
     // Create `cv_data` table if it doesn't exist
     $pdo->exec("CREATE TABLE IF NOT EXISTS cv_data (
