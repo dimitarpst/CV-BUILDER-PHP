@@ -8,7 +8,7 @@ $dbpassword = '';
 try {
     $pdo = new PDO("mysql:host=$host", $dbusername, $dbpassword);
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
+/*
     // Create database if it doesn't exist
     $pdo->exec("CREATE DATABASE IF NOT EXISTS $dbname CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci");
 
@@ -41,7 +41,7 @@ try {
         email VARCHAR(100) NOT NULL,
         pwd VARCHAR(255) NOT NULL
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
-
+*/
 } catch (PDOException $e) {
     die("Connection failed: " . $e->getMessage());
 }

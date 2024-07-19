@@ -60,6 +60,21 @@ function check_login() {
     }
 }
 
+function checkAlreadyLoggedIn() {
+    echo $_SESSION['user_id'];
+    if (isset($_SESSION['user_id'])) { 
+        echo '<script>
+                window.addEventListener("load", function() {
+                    showErrorMessage(["You are already logged in. Redirecting to dashboard..."]);
+                    setTimeout(function() {
+                        window.location.href = "dashboard.php";
+                    }, 2000);
+                });
+              </script>';
+        exit();
+    }
+}
+
 function login_inputs() {
     if (isset($_SESSION['login_data']['username'])) { 
         echo '<input type="text" placeholder="Username or Email" name="username" value="' . htmlspecialchars($_SESSION['login_data']['username']) . '">';

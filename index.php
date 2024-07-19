@@ -111,6 +111,7 @@ require_once 'includes/login_view.inc.php';
     check_login_errors();
     check_logout();
     check_login();
+    checkAlreadyLoggedIn();
     ?>
 </body>
 
