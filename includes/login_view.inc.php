@@ -66,6 +66,9 @@ function checkAlreadyLoggedIn() {
             echo '<script>
                     window.addEventListener("load", function() {
                         showSuccessMessage(["Successful login!"]);
+                        setTimeout(function() {
+                            window.location.href = "dashboard.php";
+                        }, 2000);
                     });
                   </script>';
         } else {
