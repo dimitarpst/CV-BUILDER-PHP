@@ -11,8 +11,8 @@ function get_cv_by_user_id(object $pdo, int $user_id) {
 }
 
 function create_cv(object $pdo, array $cvData) {
-    $query = "INSERT INTO cv_data (user_id, cvname, fullname, email, gender, age, phone, job_title, company, start_date, end_date, degree, university, graduation_year) 
-              VALUES (:user_id, :cvname, :fullname, :email, :gender, :age, :phone, :job_title, :company, :start_date, :end_date, :degree, :university, :graduation_year)";
+    $query = "INSERT INTO cv_data (user_id, cvname, fullname, email, gender, age, phone, job_title, company, start_date, end_date, degree, university, graduation_year, about_me) 
+              VALUES (:user_id, :cvname, :fullname, :email, :gender, :age, :phone, :job_title, :company, :start_date, :end_date, :degree, :university, :graduation_year, :about_me)";
     $stmt = $pdo->prepare($query);
 
     foreach ($cvData as $key => $value) {
@@ -36,7 +36,8 @@ function update_cv(object $pdo, int $cvId, int $userId, array $cvData) {
         end_date = :end_date,
         degree = :degree,
         university = :university,
-        graduation_year = :graduation_year  
+        graduation_year = :graduation_year,
+        about_me = :about_me  
         WHERE id = :cvId AND user_id = :userId";
 
     $stmt = $pdo->prepare($query);

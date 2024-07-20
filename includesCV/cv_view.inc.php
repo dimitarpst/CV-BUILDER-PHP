@@ -110,6 +110,15 @@ function cv_inputs() {
         echo '<input type="number" id="graduation-year" name="graduation_year">';
     }
     echo '</fieldset>';
+    echo '<fieldset>';
+    echo '<legend>About Me</legend>';
+    echo '<label for="about_me">Describe yourself in a few sentences</label>';
+    if (isset($_SESSION['cv_data']['about_me'])) {
+        echo '<textarea id="about_me" name="about_me">' . $_SESSION['cv_data']['about_me'] . '</textarea>';
+    } else {
+        echo '<textarea id="about_me" name="about_me"></textarea>';
+    }
+    echo '</fieldset>';
 }
 
 function display_cv_list(object $pdo, int $user_id) {
@@ -176,6 +185,12 @@ function display_cv_list(object $pdo, int $user_id) {
 
                     <label for="graduation-year">Graduation Year:</label>
                     <input type="number" id="graduation-year_edit" name="graduation_year" value="<?= htmlspecialchars(strval($cv['graduation_year'])) ?>" >
+                </fieldset>
+
+                <fieldset>
+                    <legend>About Me</legend>
+                    <label for="about_me">About Me:</label>
+                    <textarea id="about_me" name="about_me"><?= htmlspecialchars($cv['about_me']) ?></textarea>
                 </fieldset>
                 <button type="submit" class="save-cv-btn">Save Changes</button> 
                 </div>

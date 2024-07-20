@@ -28,7 +28,8 @@
         end_date DATE NOT NULL,
         degree VARCHAR(255) NOT NULL,
         university VARCHAR(255) NOT NULL,
-        graduation_year INT(4) NOT NULL
+        graduation_year INT(4) NOT NULL,
+        about_me VARCHAR(512) NOT NULL
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
 
     $pdo->exec("CREATE TABLE IF NOT EXISTS users (

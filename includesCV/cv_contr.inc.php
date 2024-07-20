@@ -58,7 +58,7 @@ function is_phone_invalid(string $phone)
 
 function is_job_title_between(string $job_title) 
 {
-    if (!preg_match("/[a-zA-Z ]{1,255}/", $job_title)) {
+    if (!preg_match("/^.{1,255}$/", $job_title)) {
         return true;
     } else {
         return false;
@@ -67,25 +67,7 @@ function is_job_title_between(string $job_title)
 
 function is_company_between(string $company) 
 {
-    if (!preg_match("/[a-zA-Z ]{1,255}/", $company)) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function is_degree_between(string $degree)
-{
-    if (!preg_match("/[a-zA-Z ]{1,255}/", $degree)) {
-        return true;
-    } else {
-        return false;
-    }
-}
-
-function is_university_between(string $university)
-{
-    if (!preg_match("/[a-zA-Z ]{1,255}/", $university)) {
+    if (!preg_match("/^.{1,255}$/", $company)) {
         return true;
     } else {
         return false;
@@ -110,12 +92,39 @@ function is_end_date_invalid(string $end_date, string $start_date)
     }
 }
 
+function is_degree_between(string $degree)
+{
+    if (!preg_match("/^.{1,255}$/", $degree)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+function is_university_between(string $university)
+{
+    if (!preg_match("/^.{1,255}$/", $university)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function is_graduation_year_invalid(string $graduation_year) 
 {
     if (!preg_match("/^[0-9]{4}$/", $graduation_year)) {
         return true;
     } else {
         return false; 
+    }
+}
+
+function is_about_me_between(string $company) 
+{
+    if (!preg_match("/.{1,512}/", $company)) {
+        return true;
+    } else {
+        return false;
     }
 }
 

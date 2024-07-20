@@ -22,7 +22,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         'end_date'        => $_POST['end_date'],
         'degree'          => $_POST['degree'],
         'university'      => $_POST['university'],
-        'graduation_year' => $_POST['graduation_year']
+        'graduation_year' => $_POST['graduation_year'],
+        'about_me'        => $_POST['about_me']
     ];
 
     $errors = [];
@@ -81,6 +82,10 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
     if (is_graduation_year_invalid($cvData['graduation_year'])) {
         $errors["invalid_graduation_year"] = "Invalid graduation year used!";
+    }
+
+    if (is_about_me_between($cvData['about_me'])) {
+        $errors["invalid_about_me"] = "Invalid about me used!";
     }
 
     if ($errors) {
