@@ -5,7 +5,6 @@ declare(strict_types = 1);
 require_once 'includesCV/cv_model.inc.php';
 
 function cv_inputs() {
-    // CV Name
     echo '<fieldset>';
     echo '<legend>CV Name</legend>';
     echo '<label for="cvname">Enter CV name</label>';

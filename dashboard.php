@@ -103,9 +103,9 @@ if (!isset($_SESSION['user_id'])) {
 
                 <section>
                     
-                     <h2> <?php
-                     output_user_info(); 
-                     ?></h2>
+                    <h2> 
+                        <?php output_user_info(); ?> 
+                    </h2>
                     <form id="profile-form" action="includes/logout.inc.php" method="POST">
                         
                         <form action="includes/logout.inc.php" method="post">                        
@@ -126,8 +126,6 @@ if (!isset($_SESSION['user_id'])) {
         </div>
     </div>
 
-
- <?php //check_cv_errors(); ?> 
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="js/modalCV.js"></script>
     <script src="js/dashboard.js"></script>

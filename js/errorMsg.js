@@ -51,6 +51,6 @@ function showSuccessMessage(message) {
 }
 
 const closeModalError = (event) => {
-    if (event) event.stopPropagation(); // Check if event is provided
+    if (event) event.stopPropagation();
     document.body.classList.remove('open-error');
 };

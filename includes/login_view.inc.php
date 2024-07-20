@@ -3,12 +3,12 @@
 declare(strict_types= 1);
 
 if (!isset($_SESSION['user_id'])) {
-    $_SESSION['index_visit_count'] = 0; // Reset for users not logged in
+    $_SESSION['index_visit_count'] = 0;
 } else {
     if (!isset($_SESSION['index_visit_count'])) {
-        $_SESSION['index_visit_count'] = 1; // Initialize on first visit after login
+        $_SESSION['index_visit_count'] = 1;
     } else {
-        $_SESSION['index_visit_count']++; // Increment on subsequent visits
+        $_SESSION['index_visit_count']++;
     }
 }
 
