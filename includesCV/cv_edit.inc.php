@@ -35,6 +35,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (is_input_empty($cvData)) {
             $errors["empty_input"] = "Fill in all fields!";
         }
+        
+        if (is_cvname_invalid($cvData['cvname'])) {
+            $errors["invalid_cvname"] = "Invalid CV name used!";
+        }
 
         if (is_cvname_duplicate($cvData["cvname"], $cvId, $userId, $pdo)) {
             $errors["duplicate_cvname"] = "There is already a CV with that name!";
@@ -101,8 +105,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         } else {
             try {
                 update_cv($pdo, $cvId, $userId, $cvData); 
-                //display success message  
-                header("Location: ../dashboard.php");
+                $_SESSION["cv_edit_success"] = true;
+                header("Location: ../dashboard.php"); 
                 exit();
             } catch (PDOException $e) {
                 error_log("Database Error: " . $e->getMessage());

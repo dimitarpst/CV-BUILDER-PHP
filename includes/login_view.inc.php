@@ -53,7 +53,6 @@ function check_login() {
         echo '<script>
             window.addEventListener("load", function() {
                 showErrorMessage(["You need to log in to access this page."]);
-                
             });
         </script>';
         unset($_SESSION['not_logged_in']);

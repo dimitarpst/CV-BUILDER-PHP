@@ -131,9 +131,12 @@ if (!isset($_SESSION['user_id'])) {
     <script src="js/dashboard.js"></script>
     <script src="js/sr.js"></script> 
     <script src="js/modalProfile.js"></script>
-    <script src="js/errorMsg.js"></script>
+    <script src="js/modalMsg.js"></script>
     <?php
     check_cv_errors();
+    cv_edit_success();
+    cv_create_success();
+    cv_delete_success();
     ?>
 </body>
 

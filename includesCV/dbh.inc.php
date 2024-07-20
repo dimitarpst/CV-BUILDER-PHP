@@ -16,7 +16,7 @@
     $pdo->exec("CREATE TABLE IF NOT EXISTS cv_data (
         id INT(11) AUTO_INCREMENT PRIMARY KEY,
         user_id INT(11) NOT NULL,
-        cvname VARCHAR(255) NOT NULL,
+        cvname VARCHAR(16) NOT NULL,
         fullname VARCHAR(255) NOT NULL,
         email VARCHAR(255) NOT NULL,
         gender VARCHAR(255) NOT NULL,

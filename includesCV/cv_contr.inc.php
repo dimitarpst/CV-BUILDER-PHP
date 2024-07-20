@@ -12,6 +12,15 @@ function is_input_empty(array $cvData): bool
     return false; 
 }
 
+function is_cvname_invalid(string $cvname) 
+{
+    if (!preg_match("/^.{1,16}$/", $cvname)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function is_email_invalid(string $email) 
 {
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -162,8 +171,37 @@ function check_cv_errors()
     } 
 }
 
-//function to display a success message when a cv is successfully created
+function cv_create_success()
+{
+    if (isset($_SESSION["cv_create_success"])) {
+        echo '<script>
+            window.addEventListener("load", function() {
+                showSuccessMessage("CV created successfully");
+            });
+        </script>';
+        unset($_SESSION["cv_create_success"]);
+    }
+}
+function cv_edit_success()
+{
+    if (isset($_SESSION["cv_edit_success"])) {
+        echo '<script>
+            window.addEventListener("load", function() {
+                showSuccessMessage("CV edited successfully");
+            });
+        </script>';
+        unset($_SESSION["cv_edit_success"]);
+    }
+}
 
-//function to display a success message when a cv is successfully edited
-
-//function to display a success message when a cv is successfully deleted
+function cv_delete_success()
+{
+    if (isset($_SESSION["cv_delete_success"])) {
+        echo '<script>
+            window.addEventListener("load", function() {
+                showSuccessMessage("CV deleted successfully");
+            });
+        </script>';
+        unset($_SESSION["cv_delete_success"]);
+    }
+}
