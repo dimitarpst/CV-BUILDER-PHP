@@ -19,6 +19,11 @@ li {
   list-style: none;
 }
 
+textarea {
+  resize: vertical;
+  overflow: hidden;
+}
+
 html {
   overflow-x: hidden;
 }
