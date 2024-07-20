@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const cvCard = this.closest('.cv-card');
             const cvFields = cvCard.querySelector('.cv-fields');
             cvFields.style.display = cvFields.style.display === 'none' ? 'block' : 'none';
-            this.textContent = cvFields.style.display === 'block' ? 'Cancel Edit' : 'Edit CV';
+            this.textContent = cvFields.style.display === 'block' ? 'Cancel' : 'Edit';
             document.querySelectorAll('.cv-card').forEach(cvCard => {
                 const cvFields = cvCard.querySelector('.cv-fields');
                 if (cvFields.style.display === 'none') {
