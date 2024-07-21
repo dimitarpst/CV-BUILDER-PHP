@@ -158,17 +158,17 @@ body {
 }
 
 .content nav {
-    height: 56px;
-    background: #f38b6538;
-    backdrop-filter: blur(8px);
-    padding: 0 24px 0 0;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    grid-gap: 24px;
-    top: 0;
-    left: 0;
-    z-index: 1000;
+  height: 56px;
+  background: #f38b6538;
+  backdrop-filter: blur(8px);
+  padding: 0 24px 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-gap: 24px;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 .content nav .logout,
@@ -377,7 +377,7 @@ body.open-cv-modal #cv-modal-container {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none; 
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 16 16'><path d='M8 11L3 6 8 1' fill='none' stroke='%23f38b65' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16'><path d='M8 11L3 6 8 1' fill='none' stroke='%23f38b65' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/></svg>");
   background-repeat: no-repeat;
   background-position: right 10px center;
 }
@@ -410,6 +410,7 @@ body.open-cv-modal #cv-modal-container {
   width: 25%;
   text-align: center;
 }
+
 .cv-modal-content button[type="submit"]{
   cursor: pointer;
   width: 100%;
@@ -466,6 +467,7 @@ body.open-modal .blur-overlay {
   visibility: visible;
   pointer-events: auto;
 }
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -484,7 +486,6 @@ body.open-modal .blur-overlay {
 ::-webkit-scrollbar-thumb:hover {
   background: #d8734a;
 }
-
 
 /* Profile Modal*/
 #profile-modal-container {
@@ -596,37 +597,45 @@ margin-bottom: 10px;
 .delete-cv-btn,
 .edit-cv-btn,
 .view-cv-btn,
-.save-cv-btn{
-background: #f38b65; 
-line-height: 1.4;
-font-size: 14px;
-font-weight: 500;
-color: #ffffff;
-border-radius: 30px;
-text-transform: uppercase;
-transition: all .55s ease;
-text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-padding: 8px 16px;
-border: none;
-cursor: pointer;
-box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+.save-cv-btn,
+.download-cv-btn,
+#addSkillBtn,
+#removeSkillBtn{
+  background: #f38b65; 
+  line-height: 1.4;
+  font-size: 14px;
+  font-weight: 500;
+  color: #ffffff;
+  border-radius: 30px;
+  text-transform: uppercase;
+  transition: all .55s ease;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
-.edit-cv-btn{
-margin-top:8px;
-}
+
 .delete-cv-btn:hover,
 .edit-cv-btn:hover,
 .view-cv-btn:hover,
-.save-cv-btn:hover{
-background: #d97d57;
-transform: translateY(2px);
+.save-cv-btn:hover,
+.download-cv-btn:hover,
+#addSkillBtn:hover,
+#removeSkillBtn:hover{
+  background: #d97d57;
+  transform: translateY(2px);
 }
 
 .delete-cv-btn,
 .edit-cv-btn,
 .view-cv-btn,
-.save-cv-btn {
-margin-right: 8px;
+.save-cv-btn,
+.download-cv-btn,
+#addSkillBtn,
+#removeSkillBtn{
+  margin-right: 8px;
+  margin-top:8px
 }
 
 .cv-card form {
@@ -706,13 +715,13 @@ margin-right: 8px;
 }
 
 .start_date_edit, 
-.end_date_ edit {
+.end_date_edit {
   width: 70%;
 }
 
 #age_edit, 
 #graduation-year_edit, 
-#gender_edit {
+#gender_edit{
   width: 45%;
   text-align: center;
 }

@@ -39,90 +39,41 @@
             <div class="smallText">
               <div class="skill">
                 <div>
-                  <span>Accounting</span>
+                  <span>Skill skillNumber</span>
                 </div>
                 <div class="yearsOfExperience">
-                  <span class="alignright">14</span>
+                  <span class="alignright">yearsOfExperience</span>
                   <span class="alignleft">years</span>
                 </div>
               </div>
 
               <div class="skill">
                 <div>
-                  <span>Word</span>
+                  <span>Skill skillNumber</span>
                 </div>
                 <div class="yearsOfExperience">
-                  <span class="alignright">3</span>
+                  <span class="alignright">yearsOfExperience</span>
                   <span class="alignleft">years</span>
                 </div>
               </div>
 
               <div class="skill">
                 <div>
-                  <span>Powerpoint</span>
+                  <span>Skill skillNumber</span>
                 </div>
                 <div class="yearsOfExperience">
-                  <span class="alignright">3</span>
+                  <span class="alignright">yearsOfExperience</span>
                   <span class="alignleft">years</span>
                 </div>
               </div>
 
               <div class="skill">
                 <div>
-                  <span>Accounting</span>
+                  <span>Skill skillNumber</span>
                 </div>
                 <div class="yearsOfExperience">
-                  <span class="alignright">2</span>
+                  <span class="alignright">yearsOfExperience</span>
                   <span class="alignleft">years</span>
-                </div>
-              </div>
-
-              <div class="skill">
-                <div>
-                  <span>Marketing</span>
-                </div>
-                <div class="yearsOfExperience">
-                  <span class="alignright">2</span>
-                  <span class="alignleft">years</span>
-                </div>
-              </div>
-
-              <div class="skill">
-                <div>
-                  <span>Photoshop</span>
-                </div>
-                <div class="yearsOfExperience">
-                  <span class="alignright">2</span>
-                  <span class="alignleft">years</span>
-                </div>
-              </div>
-
-              <div class="skill">
-                <div>
-                  <span>French</span>
-                </div>
-                <div class="yearsOfExperience">
-                  <span class="alignright">2</span>
-                  <span class="alignleft">years</span>
-                </div>
-              </div>
-
-              <div class="skill">
-                <div>
-                  <span>English</span>
-                </div>
-                <div class="yearsOfExperience">
-                    <span class="alignright">1</span>
-                    <span class="alignleft">year</span>
-                </div>
-              </div>
-
-              <div class="skill">
-                <div>
-                  <span>Management</span>
-                </div>
-                <div class="yearsOfExperience">
-                  <span>1 year</span>
                 </div>
               </div>
 

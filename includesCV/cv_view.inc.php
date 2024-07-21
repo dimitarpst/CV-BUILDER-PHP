@@ -1,10 +1,14 @@
 <?php
 
 declare(strict_types = 1);
-
+require_once 'dbh.inc.php';
 require_once 'includesCV/cv_model.inc.php';
+require_once 'cv_contr.inc.php';
+
+
 
 function cv_inputs() {
+    echo '<div class="cv-fields" >';
     echo '<fieldset>';
     echo '<legend>CV Name</legend>';
     echo '<label for="cvname">Enter CV name</label>';
@@ -98,7 +102,7 @@ function cv_inputs() {
     
     echo '<label for="university">University</label>';
     if (isset($_SESSION['cv_data']['university'])) {
-        echo '<input type="text" id="university" name="university" value="' . $_SESSION['cv_data']['university'] . '">';
+        echo '<input type="text" id="university" name="university" value="'. $_SESSION['cv_data']['university'] . '">';
     } else {
         echo '<input type="text" id="university" name="university">';
     }
@@ -110,6 +114,14 @@ function cv_inputs() {
         echo '<input type="number" id="graduation-year" name="graduation_year">';
     }
     echo '</fieldset>';
+
+    echo '<fieldset>';
+    echo '<legend>Skills</legend>';
+    display_skills();
+    echo '<button type="button" id="addSkillBtn">Add Skill</button>';
+    echo '<button type="button" id="removeSkillBtn">Remove Skill</button>';
+    echo '</fieldset>';
+
     echo '<fieldset>';
     echo '<legend>About Me</legend>';
     echo '<label for="about_me">Describe yourself in a few sentences</label>';
@@ -119,6 +131,7 @@ function cv_inputs() {
         echo '<textarea id="about_me" name="about_me"></textarea>';
     }
     echo '</fieldset>';
+    echo '</div>';
 }
 
 function display_cv_list(object $pdo, int $user_id) {
@@ -132,7 +145,7 @@ function display_cv_list(object $pdo, int $user_id) {
                 <a href="cv.php?cv_id=<?= $cv['id'] ?>" class="view-cv-btn">View CV</a>
                 <button class="delete-cv-btn" type="button">Delete CV</button>
                 <button class="edit-cv-btn" type="button">Edit CV</button>
-                <button class="edit-cv-btn" type="button">Download CV</button>
+                <button class="download-cv-btn" type="button">Download CV</button>
                 <div class="cv-fields" style="display: none;"> 
                 <fieldset>
                     <legend>CV Name</legend>
@@ -189,17 +202,34 @@ function display_cv_list(object $pdo, int $user_id) {
                 </fieldset>
 
                 <fieldset>
+                    <legend>Skills</legend>
+                    <?php display_skills(); ?>
+                    <button type="button" id="addSkillBtn">Add Skill</button>
+                    <button type="button" id="removeSkillBtn">Remove Skill</button>
+                </fieldset>
+
+                <fieldset>
                     <legend>About Me</legend>
-                    <label for="about_me">About Me:</label>
+                    <label for="about_me">Describe yourself in a few sentences:</label>
                     <textarea id="about_me" name="about_me"><?= htmlspecialchars($cv['about_me']) ?></textarea>
                 </fieldset>
-                <button type="submit" class="save-cv-btn">Save Changes</button> 
+
+                <button type="submit" class="save-cv-btn">Save Changes</button>
+
                 </div>
-                
             </form>
         </div>
 
         <?php
     }
 }
-
+function display_skills() {
+    for ($i = 1; $i <= 5; $i++) {
+        echo '<div id="skill' . $i . '" class="skill-input">';
+        echo '<label for="skill_name' . $i . '">Skill ' . $i . ':</label>';
+        echo '<input type="text" id="skill_name' . $i . '" name="skill_name' . $i . '" value="">';
+        echo '<label for="years_of_exp' . $i . '">Years of Experience:</label>';
+        echo '<input type="number" id="years_of_exp' . $i . '" name="years_of_exp' . $i . '" value="" style="width: 45%; text-align: center;">';
+        echo '</div>';
+    }
+}

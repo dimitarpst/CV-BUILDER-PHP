@@ -1,6 +1,5 @@
 <?php
 session_start();
-require_once 'cv_contr.inc.php';
 require_once 'dbh.inc.php';
 require_once 'cv_model.inc.php';
 require_once 'cv_contr.inc.php';  

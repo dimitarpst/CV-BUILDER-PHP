@@ -63,7 +63,39 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
-    
+    const cvFieldsList = document.querySelectorAll('.cv-fields');
+    cvFieldsList.forEach(cvFields => {
+        let currentSkill = 0;
+        const maxSkills = 5;  
+        cvFields.querySelector('#removeSkillBtn').style.display = 'none';
+        for (let i = 1; i <= maxSkills; i++) {
+            cvFields.querySelector('#skill' + i).style.display = 'none';
+        }
+        cvFields.querySelector('#addSkillBtn').addEventListener('click', function() {
+            if (currentSkill < maxSkills) {
+                currentSkill++;
+                cvFields.querySelector('#skill' + currentSkill).style.display = 'block';
+                if (currentSkill === 1) {
+                    cvFields.querySelector('#removeSkillBtn').style.display = 'inline-block';
+                }
+                if (currentSkill === maxSkills) {
+                    this.style.display = 'none';
+                }
+            }
+        });
+        cvFields.querySelector('#removeSkillBtn').addEventListener('click', function() {
+            if (currentSkill > 0) {
+                cvFields.querySelector('#skill' + currentSkill).style.display = 'none';
+                currentSkill--;
+                if (currentSkill === 0) {
+                    cvFields.querySelector('#removeSkillBtn').style.display = 'none';
+                }
+                if (currentSkill < maxSkills) {
+                    cvFields.querySelector('#addSkillBtn').style.display = 'inline-block';
+                }
+            }
+        });
+    });
 });
 
 function populateCVForm(cvData) {

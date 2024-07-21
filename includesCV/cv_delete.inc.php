@@ -6,8 +6,6 @@ require_once 'cv_model.inc.php';
 if (isset($_POST['cvId']) && is_numeric($_POST['cvId'])) {
     $cvId = (int)$_POST['cvId'];
     $userId = $_SESSION['user_id'];
-    
-
     try {
         delete_cv($pdo, $cvId, $userId);
         $_SESSION["cv_delete_success"] = true;   
