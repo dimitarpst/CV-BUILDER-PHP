@@ -22,6 +22,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         'degree'          => $_POST['degree'],
         'university'      => $_POST['university'],
         'graduation_year' => $_POST['graduation_year'],
+        'skill_name1'     => $_POST['skill_name1'],
+        'years_of_exp1'   => $_POST['years_of_exp1'],
+        'skill_name2'     => $_POST['skill_name2'],
+        'years_of_exp2'   => $_POST['years_of_exp2'],
+        'skill_name3'     => $_POST['skill_name3'],
+        'years_of_exp3'   => $_POST['years_of_exp3'],
+        'skill_name4'     => $_POST['skill_name4'],
+        'years_of_exp4'   => $_POST['years_of_exp4'],
+        'skill_name5'     => $_POST['skill_name5'],
+        'years_of_exp5'   => $_POST['years_of_exp5'],
         'about_me'        => $_POST['about_me']
     ];
 

@@ -224,6 +224,16 @@ function display_cv_list(object $pdo, int $user_id) {
     }
 }
 function display_skills() {
+    if (isset($_SESSION['cv_data']['about_me'])) {
+    for ($i = 1; $i <= 5; $i++) {
+        echo '<div id="skill' . $i . '" class="skill-input">';
+        echo '<label for="skill_name' . $i . '">Skill ' . $i . ':</label>';
+        echo '<input type="text" id="skill_name' . $i . '" name="skill_name' . $i . '" value="' . $_SESSION['cv_data']['skill_name'. $i] . '">';
+        echo '<label for="years_of_exp' . $i . '">Years of Experience:</label>';
+        echo '<input type="number" id="years_of_exp' . $i . '" name="years_of_exp' . $i . '" value="' . $_SESSION['cv_data']['years_of_exp'. $i] . '" style="width: 45%; text-align: center;">';
+        echo '</div>';
+    }
+}else{
     for ($i = 1; $i <= 5; $i++) {
         echo '<div id="skill' . $i . '" class="skill-input">';
         echo '<label for="skill_name' . $i . '">Skill ' . $i . ':</label>';
@@ -232,4 +242,5 @@ function display_skills() {
         echo '<input type="number" id="years_of_exp' . $i . '" name="years_of_exp' . $i . '" value="" style="width: 45%; text-align: center;">';
         echo '</div>';
     }
+}
 }

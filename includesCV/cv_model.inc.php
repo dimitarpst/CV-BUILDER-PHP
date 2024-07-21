@@ -11,8 +11,8 @@ function get_cv_by_user_id(object $pdo, int $user_id) {
 }
 
 function create_cv(object $pdo, array $cvData) {
-    $query = "INSERT INTO cv_data (user_id, cvname, fullname, email, gender, age, phone, job_title, company, start_date, end_date, degree, university, graduation_year, about_me) 
-              VALUES (:user_id, :cvname, :fullname, :email, :gender, :age, :phone, :job_title, :company, :start_date, :end_date, :degree, :university, :graduation_year, :about_me)";
+    $query = "INSERT INTO cv_data (user_id, cvname, fullname, email, gender, age, phone, job_title, company, start_date, end_date, degree, university, graduation_year, skill_name1, years_of_exp1, skill_name2, years_of_exp2, skill_name3, years_of_exp3, skill_name4, years_of_exp4, skill_name5, years_of_exp5, about_me) 
+              VALUES (:user_id, :cvname, :fullname, :email, :gender, :age, :phone, :job_title, :company, :start_date, :end_date, :degree, :university, :graduation_year, :skill_name1, :years_of_exp1, :skill_name2, :years_of_exp2, :skill_name3, :years_of_exp3, :skill_name4, :years_of_exp4, :skill_name5, :years_of_exp5, :about_me)";
     $stmt = $pdo->prepare($query);
 
     foreach ($cvData as $key => $value) {
@@ -37,6 +37,16 @@ function update_cv(object $pdo, int $cvId, int $userId, array $cvData) {
         degree = :degree,
         university = :university,
         graduation_year = :graduation_year,
+        skill_name1 = :skill_name1,
+        years_of_exp1 = :years_of_exp1,
+        skill_name2 = :skill_name2,
+        years_of_exp2 = :years_of_exp2,
+        skill_name3 = :skill_name3,
+        years_of_exp3 = :years_of_exp3,
+        skill_name4 = :skill_name4,
+        years_of_exp4 = :years_of_exp4,
+        skill_name5 = :skill_name5,
+        years_of_exp5 = :years_of_exp5,
         about_me = :about_me  
         WHERE id = :cvId AND user_id = :userId";
 
