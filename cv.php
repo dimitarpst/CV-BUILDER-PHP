@@ -1,3 +1,23 @@
+<?php
+ 
+ if (isset($_GET['cv_id'])) {
+  require_once 'includes/dbh.inc.php'; // Database connection
+  require_once 'includesView/cvDisplay_model.inc.php'; // Model function
+  $host = 'localhost';
+  $dbname = 'cvbuilderdb';
+  $dbusername = 'root';
+  $dbpassword = '';
+
+  $pdo = new PDO("mysql:host=$host;dbname=$dbname", $dbusername, $dbpassword);
+  $cvDetails = get_cv_details_by_id($pdo, (int)$_GET['cv_id']);
+
+  if (!$cvDetails) {
+    // Handle case where no CV details are found
+    echo "CV details not found.";
+    exit;
+  }
+}
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,8 +38,8 @@
               CONTACT
             </h2>
             <div class="smallText">
-              <p><i class='bx bxs-phone'></i> Phone</p>
-              <p><i class='bx bxs-envelope' ></i><a href="email"> Email</a></p>  
+              <p><i class='bx bxs-phone'></i><?= htmlspecialchars($cvDetails['phone']) ?></p>
+              <p><i class='bx bxs-envelope' ></i><a href="email"> <?= htmlspecialchars($cvDetails['email']) ?></a></p>  
             </div>
           </div>
           <div class="item bottomLineSeparator">
@@ -28,51 +48,61 @@
             </h2>
             <div class="smallText">
             
-              <p><i class='bx bx-male-female'></i> Gender</p>
-              <p><i class='bx bx-time-five'></i> Age</p>
+              <p><i class='bx bx-male-female'></i> <?= htmlspecialchars($cvDetails['gender']) ?></p>
+              <p><i class='bx bx-time-five'></i> <?= htmlspecialchars($cvDetails['age']) ?></p>
             </div>
           </div>
           <div class="item bottomLineSeparator">
             <h2>
-              SKILLS
+              Skills
             </h2>
             <div class="smallText">
               <div class="skill">
                 <div>
-                  <span>Skill skillNumber</span>
+                  <span><?= htmlspecialchars($cvDetails['skill_name1']) ?></span>
                 </div>
                 <div class="yearsOfExperience">
-                  <span class="alignright">yearsOfExperience</span>
+                  <span class="alignright"><?= htmlspecialchars($cvDetails['years_of_exp1']) ?></span>
                   <span class="alignleft">years</span>
                 </div>
               </div>
 
               <div class="skill">
                 <div>
-                  <span>Skill skillNumber</span>
+                  <span><?= htmlspecialchars($cvDetails['skill_name2']) ?></span>
                 </div>
                 <div class="yearsOfExperience">
-                  <span class="alignright">yearsOfExperience</span>
+                  <span class="alignright"><?= htmlspecialchars($cvDetails['years_of_exp2']) ?></span>
                   <span class="alignleft">years</span>
                 </div>
               </div>
 
               <div class="skill">
                 <div>
-                  <span>Skill skillNumber</span>
+                  <span><?= htmlspecialchars($cvDetails['skill_name3']) ?></span>
                 </div>
                 <div class="yearsOfExperience">
-                  <span class="alignright">yearsOfExperience</span>
+                  <span class="alignright"><?= htmlspecialchars($cvDetails['years_of_exp3']) ?></span>
                   <span class="alignleft">years</span>
                 </div>
               </div>
 
               <div class="skill">
                 <div>
-                  <span>Skill skillNumber</span>
+                  <span><?= htmlspecialchars($cvDetails['skill_name4']) ?></span>
                 </div>
                 <div class="yearsOfExperience">
-                  <span class="alignright">yearsOfExperience</span>
+                  <span class="alignright"><?= htmlspecialchars($cvDetails['years_of_exp4']) ?></span>
+                  <span class="alignleft">years</span>
+                </div>
+              </div>
+
+              <div class="skill">
+                <div>
+                  <span><?= htmlspecialchars($cvDetails['skill_name5']) ?></span>
+                </div>
+                <div class="yearsOfExperience">
+                  <span class="alignright"><?= htmlspecialchars($cvDetails['years_of_exp5']) ?></span>
                   <span class="alignleft">years</span>
                 </div>
               </div>
@@ -84,9 +114,9 @@
               EDUCATION
             </h2>
             <div class="smallText">
-              <p><i class='bx bxs-graduation'></i> Degree</p>
-              <p><i class='bx bx-building-house'></i> University</p>
-              <p><i class='bx bx-calendar'></i> Graduation year</p>
+              <p><i class='bx bxs-graduation'></i><?= htmlspecialchars($cvDetails['degree']) ?></p>
+              <p><i class='bx bx-building-house'></i> <?= htmlspecialchars($cvDetails['university']) ?></p>
+              <p><i class='bx bx-calendar'></i> <?= htmlspecialchars($cvDetails['graduation_year']) ?></p>
             </div>
           </div>
         </div>
@@ -95,11 +125,11 @@
       <div class="rightPanel">
         <div>
           <h1>
-            Full Name
+          <?= htmlspecialchars($cvDetails['fullname']) ?>
           </h1>
           <div class="smallText">
             <h3>
-              Job Title
+            <?= htmlspecialchars($cvDetails['job_title']) ?>
             </h3>
           </div>
         </div>
@@ -109,7 +139,7 @@
           </h2>
           <div class="smallText">
             <p>
-               About me text
+            <?= htmlspecialchars($cvDetails['about_me']) ?>
             </p>
           </div>
         </div>
@@ -122,15 +152,15 @@
             <li>
               <div class="jobPosition">
                 <span class="bolded">
-                  Job Title
+                <?= htmlspecialchars($cvDetails['job_title']) ?>
                 </span>
                 <span>
-                  Start Date - End Date
+                <?= htmlspecialchars($cvDetails['start_date']) ?> - <?= htmlspecialchars($cvDetails['end_date']) ?>
                 </span>
               </div>
               <div class="projectName bolded">
                 <span>
-                  Company
+                <?= htmlspecialchars($cvDetails['company']) ?>
                 </span>
               </div>
               <div class="smallText">
@@ -158,29 +188,6 @@
 
               </div>
             </li>
-
-            <li>
-              <div class="jobPosition">
-                <span class="bolded">
-                  Job Title
-                </span>
-                <span>
-                  Start Date - End Date
-                </span>
-              </div>
-              <div class="projectName bolded">
-                <span>
-                  Company
-                </span>
-              </div>
-              <div class="smallText">
-                <p>
-                  Quisque rutrum mollis ornare. In pharetra diam libero, non interdum dui imperdiet quis. Quisque aliquam sapien in libero finibus sodales. Mauris id commodo metus. In in laoreet dolor.
-                </p>
-                <ul>
-                  <li>
-                    Integer commodo ullamcorper mauris, id condimentum lorem elementum sed. Etiam rutrum eu elit ut hendrerit. Vestibulum congue sem ac auctor semper. Aenean quis imperdiet magna. Sed eget ullamcorper enim. Vestibulum consequat turpis eu neque efficitur blandit sed sit amet neque. Curabitur congue semper erat nec blandit.
-                  </li>
                 </ul>
 
               </div>
