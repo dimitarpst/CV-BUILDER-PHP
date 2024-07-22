@@ -4,7 +4,11 @@ declare(strict_types= 1);
 
 function is_input_empty(array $cvData): bool 
 {
-    foreach ($cvData as $field) {
+    foreach ($cvData as $key => $field) {
+        if (strpos($key, 'skill_name') !== false || strpos($key, 'years_of_exp') !== false) {
+            continue;
+        }
+
         if (empty($field)) {
             return true; 
         }
@@ -125,6 +129,22 @@ function is_graduation_year_invalid(string $graduation_year)
         return true;
     } else {
         return false; 
+    }
+}
+function is_skill_name_between(string $skill_name) 
+{
+    if (!preg_match("/^.{0,255}$/", $skill_name)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+function is_years_of_exp_invalid(string $years_of_exp) 
+{
+    if (!preg_match("/^[0-9]{1,2}$/", $years_of_exp)) {
+        return true;
+    } else {
+        return false;
     }
 }
 

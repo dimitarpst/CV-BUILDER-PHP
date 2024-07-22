@@ -8,7 +8,8 @@ require_once 'cv_contr.inc.php';
 
 
 function cv_inputs() {
-    echo '<div class="cv-fields" >';
+    echo '<div class="cv-fields" id="create-fields">';
+    echo '<input type="hidden" id="create">';
     echo '<fieldset>';
     echo '<legend>CV Name</legend>';
     echo '<label for="cvname">Enter CV name</label>';
@@ -147,7 +148,8 @@ function display_cv_list(object $pdo, int $user_id) {
                 <button class="delete-cv-btn" type="button">Delete CV</button>
                 <button class="edit-cv-btn" type="button">Edit CV</button>
                 <button class="download-cv-btn" type="button">Download CV</button>
-                <div class="cv-fields" style="display: none;"> 
+                <div class="cv-fields" id="edit-fields" style="display: none;">
+                <input type="hidden" id="edit">
                 <fieldset>
                     <legend>CV Name</legend>
                     <label for="cvname">CV Name:</label>
@@ -234,8 +236,7 @@ function display_cv_list(object $pdo, int $user_id) {
                         <label for="years_of_exp5">Years of Experience:</label>
                         <input type="number" id="years_of_exp5" name="years_of_exp5" value="<?= htmlspecialchars(strval($cv['years_of_exp5'])) ?>" style="width: 45%; text-align: center;">
                     </div>
-                    
-                    <button type="button" id="addSkillBtn" style="display: none;">Add Skill</button>
+                    <button type="button" id="addSkillBtn" style="display: none;" >Add Skill</button>
                     <button type="button" id="removeSkillBtn" style="display: none;">Remove Skill</button>
                 </fieldset>
 

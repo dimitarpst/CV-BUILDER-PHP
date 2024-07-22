@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
     });
+
     const cvFieldsList = document.querySelectorAll('.cv-fields');
     cvFieldsList.forEach(cvFields => {
         let currentSkill = 0;
@@ -77,6 +78,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 cvFields.querySelector('#skill' + i).style.display = 'none';
             }
         }
+        
         cvFields.querySelector('#addSkillBtn').addEventListener('click', function() {
             if (currentSkill < maxSkills) {
                 currentSkill++;

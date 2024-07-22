@@ -102,6 +102,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $errors["invalid_graduation_year"] = "Invalid graduation year used!";
         }
 
+        for ($i = 1; $i <= 5; $i++) {
+            $skill_name = $cvData['skill_name' . $i];
+            if (is_skill_name_between($skill_name)) {
+                $errors["invalid_skill_name"] = "Invalid skill name used!";
+            }
+        }
+
+        for ($i = 1; $i <= 5; $i++) {
+            $years_of_exp = $cvData['years_of_exp' . $i];
+            if (is_years_of_exp_invalid($years_of_exp)) {
+                $errors["invalid_years_of_exp"] = "Invalid years of experience used!";
+            }
+        }
+
         if (is_about_me_between($cvData['about_me'])) {
             $errors["invalid_about_me"] = "Invalid about me used!";
         }
