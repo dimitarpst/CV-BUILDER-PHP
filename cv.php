@@ -2,7 +2,7 @@
  
  if (isset($_GET['cv_id'])) {
   require_once 'includes/dbh.inc.php'; // Database connection
-  require_once 'includesView/cvDisplay_model.inc.php'; // Model function
+  require_once 'includesCVDisplay/cvDisplay_model.inc.php'; // Model function
   $host = 'localhost';
   $dbname = 'cvbuilderdb';
   $dbusername = 'root';
@@ -12,7 +12,6 @@
   $cvDetails = get_cv_details_by_id($pdo, (int)$_GET['cv_id']);
 
   if (!$cvDetails) {
-    // Handle case where no CV details are found
     echo "CV details not found.";
     exit;
   }
@@ -25,7 +24,6 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Narrow&family=Julius+Sans+One&family=Open+Sans&family=Source+Sans+Pro&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/cv.css">
 </head>
 <body>
   <page size="A4">
@@ -34,81 +32,69 @@
         <img src="img/img.png"/>
         <div class="details">
           <div class="item bottomLineSeparator">
-            <h2>
-              CONTACT
-            </h2>
-            <div class="smallText">
+            <h2>CONTACT</h2>
+            <div class="smallText"></div>
               <p><i class='bx bxs-phone'></i><?= htmlspecialchars($cvDetails['phone']) ?></p>
-              <p><i class='bx bxs-envelope' ></i><a href="email"> <?= htmlspecialchars($cvDetails['email']) ?></a></p>  
+              <p><i class='bx bxs-envelope'></i><a href="email"><?= htmlspecialchars($cvDetails['email']) ?></a></p>  
             </div>
           </div>
           <div class="item bottomLineSeparator">
-            <h2>
-              Details
-            </h2>
+            <h2>Details</h2>
             <div class="smallText">
-            
-              <p><i class='bx bx-male-female'></i> <?= htmlspecialchars($cvDetails['gender']) ?></p>
-              <p><i class='bx bx-time-five'></i> <?= htmlspecialchars($cvDetails['age']) ?></p>
+              <p><i class='bx bx-male-female'></i><?= htmlspecialchars($cvDetails['gender']) ?></p>
+              <p><i class='bx bx-time-five'></i><?= htmlspecialchars($cvDetails['age']) ?></p>
             </div>
           </div>
           <div class="item bottomLineSeparator">
-            <h2>
-              Skills
-            </h2>
+            <h2>Skills</h2>
             <div class="smallText">
-              <div class="skill">
-                <div>
-                  <span><?= htmlspecialchars($cvDetails['skill_name1']) ?></span>
+              <?php
+              for ($i = 1; $i <= 5; $i++) {
+                ?>
+                <div class="skill">
+                  <div>
+                    <span><?= htmlspecialchars($cvDetails['skill_name' . $i]) ?></span>
+                  </div>
+                  <div class="yearsOfExperience">
+                    <span class="alignright"><?= htmlspecialchars($cvDetails['years_of_exp' . $i]) ?></span>
+                    <span class="alignleft">years</span>
+                  </div>
                 </div>
-                <div class="yearsOfExperience">
-                  <span class="alignright"><?= htmlspecialchars($cvDetails['years_of_exp1']) ?></span>
-                  <span class="alignleft">years</span>
-                </div>
-              </div>
-
-              <div class="skill">
-                <div>
-                  <span><?= htmlspecialchars($cvDetails['skill_name2']) ?></span>
-                </div>
-                <div class="yearsOfExperience">
-                  <span class="alignright"><?= htmlspecialchars($cvDetails['years_of_exp2']) ?></span>
-                  <span class="alignleft">years</span>
-                </div>
-              </div>
-
-              <div class="skill">
-                <div>
-                  <span><?= htmlspecialchars($cvDetails['skill_name3']) ?></span>
-                </div>
-                <div class="yearsOfExperience">
-                  <span class="alignright"><?= htmlspecialchars($cvDetails['years_of_exp3']) ?></span>
-                  <span class="alignleft">years</span>
-                </div>
-              </div>
-
-              <div class="skill">
-                <div>
-                  <span><?= htmlspecialchars($cvDetails['skill_name4']) ?></span>
-                </div>
-                <div class="yearsOfExperience">
-                  <span class="alignright"><?= htmlspecialchars($cvDetails['years_of_exp4']) ?></span>
-                  <span class="alignleft">years</span>
-                </div>
-              </div>
-
-              <div class="skill">
-                <div>
-                  <span><?= htmlspecialchars($cvDetails['skill_name5']) ?></span>
-                </div>
-                <div class="yearsOfExperience">
-                  <span class="alignright"><?= htmlspecialchars($cvDetails['years_of_exp5']) ?></span>
-                  <span class="alignleft">years</span>
-                </div>
-              </div>
-
+                <?php
+              }
+              ?>
             </div>
           </div>
+        </div>
+      </div>
+      <div class="rightPanel">
+        <div>
+          <h1><?= htmlspecialchars($cvDetails['fullname']) ?></h1>
+          <div class="smallText">
+            <h3><?= htmlspecialchars($cvDetails['job_title']) ?></h3>
+          </div>
+        </div>
+        <div>
+          <h2>About me</h2>
+          <div class="smallText">
+          <p><?= htmlspecialchars($cvDetails['about_me']) ?></p>
+          </div>
+        </div>
+        <div class="workExperience">
+          <h2>Work experience</h2>
+          <ul>
+            <li>
+              <div class="jobPosition">
+                <span class="bolded"><?= htmlspecialchars($cvDetails['job_title']) ?></span>
+                <span><?= htmlspecialchars($cvDetails['start_date']) ?> - <?= htmlspecialchars($cvDetails['end_date']) ?></span>
+              </div>
+              <div class="projectName bolded">
+                <span><?= htmlspecialchars($cvDetails['company']) ?></span>
+              </div>
+              <div class="smallText">
+                <p>Maecenas eget semper sapien. Sed convallis nunc egestas dui convallis dictum id nec metus. Donec vestibulum justo mauris, ac congue lacus tincidunt id. Vivamus rhoncus risus ac ex varius gravida. Donec eget ullamcorper ipsum.</p>
+                <ul>
+                  <li></li>
           <div class="item">
             <h2>
               EDUCATION
@@ -197,5 +183,8 @@
       </div>
     </div>
   </page>
-</body>
+  <script src="js/download.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.4/purify.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
 </html>
