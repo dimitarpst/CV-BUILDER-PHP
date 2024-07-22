@@ -68,8 +68,14 @@ document.addEventListener('DOMContentLoaded', () => {
         let currentSkill = 0;
         const maxSkills = 5;  
         cvFields.querySelector('#removeSkillBtn').style.display = 'none';
+        const addSkillBtn = cvFields.querySelector('#addSkillBtn');
         for (let i = 1; i <= maxSkills; i++) {
-            cvFields.querySelector('#skill' + i).style.display = 'none';
+            if (addSkillBtn.style.display === 'none') {
+                cvFields.querySelector('#skill' + i).style.display = 'inline-block';
+            }
+            else {
+                cvFields.querySelector('#skill' + i).style.display = 'none';
+            }
         }
         cvFields.querySelector('#addSkillBtn').addEventListener('click', function() {
             if (currentSkill < maxSkills) {

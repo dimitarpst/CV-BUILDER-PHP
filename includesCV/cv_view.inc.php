@@ -137,6 +137,7 @@ function cv_inputs() {
 function display_cv_list(object $pdo, int $user_id) {
     $cvs = get_cv_by_user_id($pdo, $user_id);
     foreach ($cvs as $cv) {
+        $cvs = get_cv_by_user_id($pdo, $user_id);
         ?>
         <div class="cv-card" data-cv-id="<?= $cv['id'] ?>">
             <form id="cv-form-<?= $cv['id'] ?>" method="POST" action="includesCV/cv_edit.inc.php">
@@ -203,9 +204,39 @@ function display_cv_list(object $pdo, int $user_id) {
 
                 <fieldset>
                     <legend>Skills</legend>
-                    <?php display_skills(); ?>
-                    <button type="button" id="addSkillBtn">Add Skill</button>
-                    <button type="button" id="removeSkillBtn">Remove Skill</button>
+                    <div id="skill1" class="skill-input">
+                        <label for="skill_name1">Skill 1:</label>
+                        <input type="text" id="skill_name1" name="skill_name1" value="<?= htmlspecialchars($cv['skill_name1']) ?>">
+                        <label for="years_of_exp1">Years of Experience:</label>
+                        <input type="number" id="years_of_exp1" name="years_of_exp1" value="<?= htmlspecialchars(strval($cv['years_of_exp1'])) ?>" style="width: 45%; text-align: center;">
+                    </div>
+                    <div id="skill2" class="skill-input">
+                        <label for="skill_name2">Skill 2:</label>
+                        <input type="text" id="skill_name2" name="skill_name2" value="<?= htmlspecialchars($cv['skill_name2']) ?>">
+                        <label for="years_of_exp2">Years of Experience:</label>
+                        <input type="number" id="years_of_exp2" name="years_of_exp2" value="<?= htmlspecialchars(strval($cv['years_of_exp2'])) ?>" style="width: 45%; text-align: center;">
+                    </div>
+                    <div id="skill3" class="skill-input">
+                        <label for="skill_name3">Skill 3:</label>
+                        <input type="text" id="skill_name3" name="skill_name3" value="<?= htmlspecialchars($cv['skill_name3']) ?>">
+                        <label for="years_of_exp3">Years of Experience:</label>
+                        <input type="number" id="years_of_exp3" name="years_of_exp3" value="<?= htmlspecialchars(strval($cv['years_of_exp3'])) ?>" style="width: 45%; text-align: center;">
+                    </div>
+                    <div id="skill4" class="skill-input">
+                        <label for="skill_name4">Skill 4:</label>
+                        <input type="text" id="skill_name4" name="skill_name4" value="<?= htmlspecialchars($cv['skill_name4']) ?>">
+                        <label for="years_of_exp4">Years of Experience:</label>
+                        <input type="number" id="years_of_exp4" name="years_of_exp4" value="<?= htmlspecialchars(strval($cv['years_of_exp4'])) ?>" style="width: 45%; text-align: center;">
+                    </div>
+                    <div id="skill5" class="skill-input">
+                        <label for="skill_name5">Skill 5:</label>
+                        <input type="text" id="skill_name5" name="skill_name5" value="<?= htmlspecialchars($cv['skill_name5']) ?>">
+                        <label for="years_of_exp5">Years of Experience:</label>
+                        <input type="number" id="years_of_exp5" name="years_of_exp5" value="<?= htmlspecialchars(strval($cv['years_of_exp5'])) ?>" style="width: 45%; text-align: center;">
+                    </div>
+                    
+                    <button type="button" id="addSkillBtn" style="display: none;">Add Skill</button>
+                    <button type="button" id="removeSkillBtn" style="display: none;">Remove Skill</button>
                 </fieldset>
 
                 <fieldset>
@@ -224,7 +255,7 @@ function display_cv_list(object $pdo, int $user_id) {
     }
 }
 function display_skills() {
-    if (isset($_SESSION['cv_data']['about_me'])) {
+    if (isset($_SESSION['cv_data']['skill_name1'])) {
     for ($i = 1; $i <= 5; $i++) {
         echo '<div id="skill' . $i . '" class="skill-input">';
         echo '<label for="skill_name' . $i . '">Skill ' . $i . ':</label>';
