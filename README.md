@@ -1,6 +1,6 @@
 How to run the website:
 
-1: Download xampp in C:/ 
+1: Download xampp in your C:/ 
 https://www.apachefriends.org/
 
 2: Clone the project to your local computer and open Visual Studio Code
