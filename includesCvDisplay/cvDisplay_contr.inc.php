@@ -1,14 +1,20 @@
 <?php
 declare(strict_types=1);
-require_once 'includes/dbh.inc.php'; // Adjusted path to include the database connection
+require_once 'includes/dbh.inc.php';
 require_once 'cvDisplay_model.inc.php';
 
-function display_cv(int $id) {
-    global $pdo; // Use the global $pdo instance
-    $cvDetails = get_cv_details_by_id($pdo, $id);
-    if ($cvDetails) {
-        require 'cvDisplay_view.inc.php';
-    } else {
-        echo "<p>CV not found.</p>";
+function display_skills_in_cv(array $cvDetails) {
+    for ($i = 1; $i <= 5; $i++) {
+        $yearsOfExp = htmlspecialchars(strval($cvDetails['years_of_exp' . $i]));
+        $displayStyle = $yearsOfExp == "0" ? 'style="display: none;"' : '';
+        echo '<div id="skill' . $i . '" class="skill" ' . $displayStyle . '>';
+        echo '<div>';
+        echo '<span>' . htmlspecialchars($cvDetails['skill_name' . $i]) . '</span>';
+        echo '</div>';
+        echo '<div class="yearsOfExperience">';
+        echo '<span class="alignright">' . htmlspecialchars(strval($cvDetails['years_of_exp' . $i])) . '</span>';
+        echo '<span class="alignleft">years</span>';
+        echo '</div>';
+        echo '</div>';
     }
 }

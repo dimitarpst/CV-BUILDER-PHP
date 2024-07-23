@@ -5,12 +5,21 @@ function downloadCvAsPdf() {
         .then(html => {
             const jsPDF = window.jspdf.jsPDF;
             const doc = new jsPDF();
+            
+            const link = document.createElement('link');
+            link.href = 'css/cv.css';
+            link.rel = 'stylesheet';
+            document.head.appendChild(link);
+            
             doc.html(html, {
                 callback: function (doc) {
                     doc.save(`CV-${cvId}.pdf`);
+                    location.reload();
                 },
-                x: 1,
-                y: 1
+                x: 10,
+                y: 10,
+                windowWidth: 1000 
+
             });
         })
         .catch(error => console.error('Error downloading CV:', error));
