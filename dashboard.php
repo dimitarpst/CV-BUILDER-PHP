@@ -28,7 +28,7 @@ if (!isset($_SESSION['user_id'])) {
     <div class="blur-overlay"></div>
 
     <div class="sidebar">
-        <a href="#" class="logo">
+        <a href="index.php" class="logo">
             <i class='bx bx-code-alt'></i>
             <div class="logo-name"><span>Colo</span>ssus</div>
         </a>
@@ -63,7 +63,6 @@ if (!isset($_SESSION['user_id'])) {
         </main>
     </div>
 
-<!-- CV Information Modal -->
     <div id="cv-modal-container">
         <div class="cv-modal-content">
             <div class="cv-modal-header">
@@ -85,12 +84,9 @@ if (!isset($_SESSION['user_id'])) {
             </section>
         </div>
     </div>
-    
-<!-- Profile Modal -->
-
-<div id="profile-modal-container">
-            <div class="profile-modal-content">
-                <div class="profile-modal-header">
+    <div id="profile-modal-container">
+        <div class="profile-modal-content">
+            <div class="profile-modal-header">
                 <div class="cv-modal-title">
                     <h1>View Profile</h1>
                 </div>
@@ -99,22 +95,21 @@ if (!isset($_SESSION['user_id'])) {
                         <i class='bx bx-x-circle'></i>
                     </span>
                 </div>
-                </div>
-
-                <section>
-                    
-                    <h2> 
-                        <?php output_user_info(); ?> 
-                    </h2>
-                    <form id="profile-form" action="includes/logout.inc.php" method="POST">
-                        
-                        <form action="includes/logout.inc.php" method="post">                        
-                            <button class="create-cv"><i class='bx bx-log-out-circle'></i>Logout</button>
-                        </form>
-                    </form>
-                </section>
             </div>
+
+            <section>
+                <h2>
+                    <?php output_user_info(); ?>
+                </h2>
+                <form id="profile-form" action="includes/logout.inc.php" method="POST">
+
+                    <form action="includes/logout.inc.php" method="post">
+                        <button id="profileBtn"><i class='bx bx-log-out-circle'></i>Logout</button>
+                    </form>
+                </form>
+            </section>
         </div>
+    </div>
 
     </div>
 

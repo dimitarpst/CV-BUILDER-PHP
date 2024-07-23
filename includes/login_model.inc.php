@@ -8,7 +8,6 @@ function get_user_by_username_or_email(object $pdo, string $loginIdentifier)
     $stmt = $pdo->prepare($query);
     $stmt->bindValue(':loginIdentifier', $loginIdentifier);
     $stmt->execute();
-
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result;
 }

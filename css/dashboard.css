@@ -552,6 +552,13 @@ body.open-profile-modal .blur-overlay {
   visibility: visible;
 }
 
+#profileBtn{
+  font-size: 16px!important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -600,7 +607,8 @@ margin-bottom: 10px;
 .save-cv-btn,
 .download-cv-btn,
 #addSkillBtn,
-#removeSkillBtn{
+#removeSkillBtn,
+#profileBtn{
   background: #f38b65; 
   line-height: 1.4;
   font-size: 14px;
@@ -622,7 +630,8 @@ margin-bottom: 10px;
 .save-cv-btn:hover,
 .download-cv-btn:hover,
 #addSkillBtn:hover,
-#removeSkillBtn:hover{
+#removeSkillBtn:hover,
+#profileBtn:hover{
   background: #d97d57;
   transform: translateY(2px);
 }
@@ -633,7 +642,8 @@ margin-bottom: 10px;
 .save-cv-btn,
 .download-cv-btn,
 #addSkillBtn,
-#removeSkillBtn{
+#removeSkillBtn,
+#profileBtn{
   margin-right: 8px;
   margin-top:8px
 }

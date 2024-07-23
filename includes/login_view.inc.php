@@ -15,7 +15,7 @@ if (!isset($_SESSION['user_id'])) {
 function output_user_info() 
 {
     if (isset($_SESSION["user_id"])) {
-        echo "You are logged in as: " . $_SESSION["user_username"];
+        echo '<span style="color: white;">You are logged in as: ' . $_SESSION["user_username"] . '</span>';
     } else {
         echo "You are not logged in.";        
     }
@@ -43,7 +43,6 @@ function check_logout() {
             });
         </script>';
         
-        header("Location: index.php");
         exit();
     }
 }

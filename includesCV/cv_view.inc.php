@@ -5,8 +5,6 @@ require_once 'dbh.inc.php';
 require_once 'includesCV/cv_model.inc.php';
 require_once 'cv_contr.inc.php';
 
-
-
 function cv_inputs() {
     echo '<div class="cv-fields" id="create-fields">';
     echo '<input type="hidden" id="create">';

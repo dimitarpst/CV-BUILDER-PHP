@@ -194,6 +194,13 @@ section {
             margin-right: 5px;
         }
 
+@media (min-width: 1461px) and (max-width: 1727px) {
+    section {
+        padding: 0 10%; /* Adjust the padding as needed for responsiveness */
+        transition: .2s;
+    }
+}        
+
 @media (max-width: 1535px) {
     header {
         padding: 15px 3%;
@@ -392,7 +399,6 @@ section {
         }
 
 
-/* LOGIN */
 
 /* Modals */
 button {
@@ -504,7 +510,6 @@ body.open-register .modal-background {
     visibility: visible;
     pointer-events: auto;
 }
-/* Modals */
 
 /* ERROR */
 .modal3,

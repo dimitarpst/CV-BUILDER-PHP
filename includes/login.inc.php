@@ -9,7 +9,6 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         require_once 'login_model.inc.php';
         require_once 'login_contr.inc.php';
 
-        //ERROR HANDLE
         $errors = [];
 
         if (is_input_empty($username, $pwd)) {

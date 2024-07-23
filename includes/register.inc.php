@@ -1,4 +1,5 @@
 <?php
+
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $username = $_POST['username']; 
     $email = $_POST['email'];
@@ -8,9 +9,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
         require_once 'register_model.inc.php';
         require_once 'register_contr.inc.php';
         
-        //ERROR HANDLE
         $errors = [];
-
 
         if (is_input_empty($username, $email, $pwd, $_POST['pwdrepeat'])) { 
             $errors["empty_input"] = "Fill in all fields!";

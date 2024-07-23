@@ -22,8 +22,8 @@ function downloadCVasPDF() {
 }
 
 /*
-todooneday
-function CvAsPdf() {
+todoSomeDay
+function CvAsPdfText() {
     const cvId = this.closest('.cv-card').getAttribute('data-cv-id');
     fetch(`cv.php?cv_id=${cvId}`)
         .then(response => response.text())
