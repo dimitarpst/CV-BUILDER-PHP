@@ -140,17 +140,17 @@ page[size="A4"] {
 }
 
 .leftPanel {
-  width: 35%;
+  width: 37%;
   background-color: #484444;
-  padding: 0.7cm;
+  padding: 0.5cm;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
 .rightPanel {
-  width: 65%;
-  padding: 0.7cm;
+  width: 63%;
+  padding: 0.5cm;
 }
 
 .leftPanel img {
@@ -167,6 +167,7 @@ page[size="A4"] {
   width: 100%;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 .skill {

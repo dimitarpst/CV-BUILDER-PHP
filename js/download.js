@@ -12,15 +12,18 @@ function downloadCVasPDF() {
             const html2pdf = window.html2pdf;
             const opt = {
                 filename: `CV-${cvId}.pdf`,
-                html2canvas: { scale: 2 },
-                jsPDF: { orientation: 'portrait', unit: 'cm', format: 'letter' }
+                html2canvas: { scale: 3 },
+                jsPDF: { orientation: 'portrait', unit: 'cm', format: 'A4' },
+                pagebreak: { mode: ['avoid-all','css','legacy'] }
             };
             html2pdf().from(html).set(opt).save();
         })
         .catch(error => console.error('Error:', error));
 }
 
-/*function CvAsPdf() {
+/*
+todooneday
+function CvAsPdf() {
     const cvId = this.closest('.cv-card').getAttribute('data-cv-id');
     fetch(`cv.php?cv_id=${cvId}`)
         .then(response => response.text())
