@@ -1,10 +1,38 @@
-function downloadCvAsPdf() {
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.download-cv-btn').forEach(button => {
+        button.addEventListener('click', downloadCVasPDF);
+    });
+});
+
+function downloadCVasPDF() {
     const cvId = this.closest('.cv-card').getAttribute('data-cv-id');
     fetch(`cv.php?cv_id=${cvId}`)
         .then(response => response.text())
         .then(html => {
-            const jsPDF = window.jspdf.jsPDF;
-            const doc = new jsPDF();
+            const html2pdf = window.html2pdf;
+            const opt = {
+                filename: `CV-${cvId}.pdf`,
+                html2canvas: { scale: 2 },
+                jsPDF: { orientation: 'portrait', unit: 'cm', format: 'letter' }
+            };
+            html2pdf().from(html).set(opt).save();
+        })
+        .catch(error => console.error('Error:', error));
+}
+
+/*function CvAsPdf() {
+    const cvId = this.closest('.cv-card').getAttribute('data-cv-id');
+    fetch(`cv.php?cv_id=${cvId}`)
+        .then(response => response.text())
+        .then(html => {
+            const jsPDF = window.jsPDF.jsPDF;
+            const doc = new jsPDF({
+                margin: 10,
+                unit: 'pt',
+                format: 'a4',
+                compress: true,
+                precision: 2,
+            });
             
             const link = document.createElement('link');
             link.href = 'css/cv.css';
@@ -15,12 +43,9 @@ function downloadCvAsPdf() {
                 callback: function (doc) {
                     doc.save(`CV-${cvId}.pdf`);
                     location.reload();
-                },
-                x: 10,
-                y: 10,
-                windowWidth: 1000 
+                }
 
             });
         })
-        .catch(error => console.error('Error downloading CV:', error));
-}
+        .catch(error => console.error('Error :', error));
+}*/

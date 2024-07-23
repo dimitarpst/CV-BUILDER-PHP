@@ -23,7 +23,7 @@
   <link rel="stylesheet" href="css/cv.css">
 </head>
 <body>
-  <page size="A4">
+  <page size="A4" id="page">
     <div class="container">
       <div class="leftPanel">
         <img src="img/img.png"/>
@@ -117,9 +117,13 @@
       </div>
     </div>
   </page>
+<!--
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.4/purify.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.3.2/html2canvas.min.js"></script>
-  <script src="js/download.js"></script>
+-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="js/download.js"></script>
+  
 </body>
 </html>

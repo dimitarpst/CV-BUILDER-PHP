@@ -104,10 +104,10 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
-
+/*
     document.querySelectorAll('.download-cv-btn').forEach(button => {
-        button.addEventListener('click', downloadCvAsPdf);
-    });
+        button.addEventListener('click', CvAsPdf);
+    }); */
 });
 
 
