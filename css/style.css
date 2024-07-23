@@ -196,7 +196,7 @@ section {
 
 @media (min-width: 1461px) and (max-width: 1727px) {
     section {
-        padding: 0 10%; /* Adjust the padding as needed for responsiveness */
+        padding: 0 10%;
         transition: .2s;
     }
 }        

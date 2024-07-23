@@ -44,7 +44,7 @@ if (!isset($_SESSION['user_id'])) {
                 <i class='bx bx-menu'></i>
             </div>
             <div class="iconL">
-                <a href="#" class="profile open-profile-modal"> <img src="img/logo.png" alt="Profile Image"> </a>
+                <a class="profile open-profile-modal"> <img src="img/logo.png" alt="Profile Image"> </a>
             </div>            
         </nav>
 
@@ -58,8 +58,7 @@ if (!isset($_SESSION['user_id'])) {
 
 
             <div class="cv-list">
-            <?php display_cv_list($pdo, $_SESSION['user_id']); ?>
-            </div>
+            <?php display_cv_list($pdo, $_SESSION['user_id']); ?></div>
         </main>
     </div>
 

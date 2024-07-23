@@ -17,7 +17,8 @@ function output_user_info()
     if (isset($_SESSION["user_id"])) {
         echo '<span style="color: white;">You are logged in as: ' . $_SESSION["user_username"] . '</span>';
     } else {
-        echo "You are not logged in.";        
+        echo '<span style="color: white;">You are not logged in.</span>';
+        echo '<style>#profileBtn { display: none; }</style>';
     }
 }
 
