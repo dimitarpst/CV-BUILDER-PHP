@@ -98,12 +98,15 @@ if (!isset($_SESSION['user_id'])) {
 
             <section>
                 <h2>
-                    <?php output_user_info(); ?>
+                    <?php output_user_info();?>
                 </h2>
                 <form id="profile-form" action="includes/logout.inc.php" method="POST">
 
                     <form action="includes/logout.inc.php" method="post">
                         <button id="profileBtn"><i class='bx bx-log-out-circle'></i>Logout</button>
+                    </form>
+                    <form action="includes/delete_user.inc.php" method="post">
+                        <button id="profileBtn"><i class='bx bx-user'></i>Delete user</button>
                     </form>
                 </form>
             </section>

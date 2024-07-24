@@ -99,6 +99,7 @@ require_once 'includesCV/dbh.inc.php';
     check_logout();
     check_login();
     checkAlreadyLoggedIn();
+    user_delete_success();
     ?>
 </body>
 

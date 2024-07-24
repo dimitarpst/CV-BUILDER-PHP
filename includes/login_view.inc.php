@@ -48,6 +48,19 @@ function check_logout() {
     }
 }
 
+function user_delete_success()
+{
+    if (isset($_GET["userdelete"]) && $_GET["userdelete"] === "success") {
+        echo '<script>
+            window.addEventListener("load", function() {
+                showSuccessMessage("User deleted successfully!");
+            });
+        </script>';
+
+        exit();
+    }
+}
+
 function check_login() {
     if (isset($_SESSION['not_logged_in'])) {
         echo '<script>

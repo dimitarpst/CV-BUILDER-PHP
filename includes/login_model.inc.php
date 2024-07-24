@@ -11,3 +11,10 @@ function get_user_by_username_or_email(object $pdo, string $loginIdentifier)
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result;
 }
+
+function delete_user(object $pdo, int $userId): bool {
+    $query = "DELETE FROM users WHERE id = :userId";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindValue(':userId', $userId, PDO::PARAM_INT);
+    return $stmt->execute();
+}
