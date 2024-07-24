@@ -2,6 +2,7 @@
 require_once 'includes/config_session.inc.php';
 require_once 'includes/register_view.inc.php';
 require_once 'includes/login_view.inc.php';
+require_once 'includesCV/dbh.inc.php';
 ?>
 
 <!DOCTYPE html>

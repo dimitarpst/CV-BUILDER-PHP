@@ -14,7 +14,8 @@
     $pdo->exec("CREATE DATABASE IF NOT EXISTS $dbname CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci");
 
     $pdo->exec("CREATE TABLE IF NOT EXISTS cv_data (
-      id INT(11) AUTO_INCREMENT PRIMARY KEY,
+      id INT(11) NOT NULL AUTO_INCREMENT,
+      user_id INT(11) NOT NULL,
       cvname VARCHAR(16) NOT NULL,
       fullname VARCHAR(255) NOT NULL,
       email VARCHAR(255) NOT NULL,
@@ -38,13 +39,14 @@
       years_of_exp4 INT(2) NOT NULL,
       skill_name5 VARCHAR(255) NOT NULL,
       years_of_exp5 INT(2) NOT NULL,
-      about_me VARCHAR(512) NOT NULL
+      about_me VARCHAR(512) NOT NULL,
+      PRIMARY KEY (id),
+      FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
 
     $pdo->exec("CREATE TABLE IF NOT EXISTS users (
         id INT(11) AUTO_INCREMENT PRIMARY KEY,
         username VARCHAR(255) NOT NULL,
-        user_id INT(11) NOT NULL,
         email VARCHAR(100) NOT NULL,
         pwd VARCHAR(255) NOT NULL
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4");
