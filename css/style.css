@@ -194,7 +194,7 @@ section {
             margin-right: 5px;
         }
 
-@media (min-width: 1461px) and (max-width: 1727px) {
+@media (min-width: 1341px) and (max-width: 1727px) {
     section {
         padding: 0 10%;
         transition: .2s;
@@ -208,7 +208,7 @@ section {
     }
 }
 
-@media (max-width: 1460px) {
+@media (max-width: 1341px) {
     section {
         padding: 0 12%;
         transition: .2s;
