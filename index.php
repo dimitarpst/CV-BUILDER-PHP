@@ -25,7 +25,7 @@ require_once 'includes/login_view.inc.php';
         </a>
         <ul class="navbar">
             <li><a href="#"><i class='bx bx-group'></i>About</a></li>
-            <li><a href="#.php"><i class='bx bxs-contact'></i>Contacts</a></li>
+            <li><a href="#"><i class='bx bxs-contact'></i>Contacts</a></li>
         </ul>
         <div class="bx bx-menu" id="menu-icon"></div>
     </header>
