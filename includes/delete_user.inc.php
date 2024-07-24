@@ -10,7 +10,7 @@ if (isset($userId)) {
         if (delete_user($pdo, $userId)) {
             session_unset();
             session_destroy();
-            header("Location: ../index.php?user_delete=success");
+            header("Location: ../index.php?userdelete=success");
             exit();
         } else {
             throw new Exception("Failed to delete user.");
